@@ -11,7 +11,7 @@ TASKS
 
 -   night mode: _chris kevin_
 
--   error sadie: _sadie taimoor_
+-   error: _sadie taimoor_
 
 -   pull requests: each feature the ppl who weren't working on it approve it
 
