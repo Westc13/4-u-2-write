@@ -1,26 +1,21 @@
-import logo from "./logo.svg";
+// !IMPORT ZONE
+import Home from "./components/Home.js";
 import "./App.scss";
+import { Link, Routes, Route } from "react-router-dom";
 
 function App() {
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
+		<div>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				{/* //TODO update this with the writing page */}
+				<Route path="/writing" element={<Home />} />
+			</Routes>
 		</div>
 	);
 }
 
 export default App;
+
+// PSEUDO CODE
 

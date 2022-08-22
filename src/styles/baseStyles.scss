@@ -1,0 +1,18 @@
+.wrapper {
+	max-width: 1980px;
+	// width: 90%;
+}
+
+button,
+.button {
+	background-color: $grey;
+	color: $dark;
+	padding: 0.5% 2%;
+	margin: 1%;
+	font-weight: bold;
+}
+
+select {
+	background-color: $grey;
+	color: $dark;
+}

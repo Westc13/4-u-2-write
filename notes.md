@@ -1,3 +1,7 @@
+VARIA TO DO
+
+-   configure logo to work on dark and light mode
+
 TASKS
 
 -   creating visual design: _taimoor_
@@ -39,7 +43,7 @@ writing prompt
 
 timer
 
--   input (either type:time or dropdown? dropdown might be easiest) to select how long they want to write for
+-   dropdown to select how long they want to write for
 -   print countdown to page somewhere
 
     -   display a fontawesome clock icon, on hover show time left
