@@ -5,45 +5,44 @@ import { Link } from "react-router-dom";
 const Home = () => {
 	return (
 		<div className="home">
-			<header className="home__header">
-				<img src={logo} alt="The 4 U 2 Write logo." />
-
-				<button className="icon">light mode icon lol</button>
-			</header>
-
-			<main className="home__main">
-				<h1>4 U 2 Write</h1>
-
-				<div className="home__dropdownContainer">
-					<select
-						className="home__dropdown"
-						name="writingTime"
-						id="writingTime"
-					>
-						<option value="none">Choose your writing time</option>
-					</select>
-					<label htmlFor="writingTime" className="sr-only">
-						Choose your writing time
-					</label>
-					<Link className="home__goButton button" to="/">
-						Go
-					</Link>
-				</div>
-			</main>
-
-			<aside className="home__aside">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Assumenda, labore, neque distinctio voluptatem vero
-					perferendis suscipit, ullam at ipsa earum cum cupiditate
-					perspiciatis laborum adipisci porro exercitationem eveniet
-					non iste!
-				</p>
-			</aside>
-
-			<footer className="home__footer">
-				created at juno with unending spite
-			</footer>
+			<div className="wrapper">
+				<header className="home__header">
+					<img src={logo} alt="The 4 U 2 Write logo." />
+					<button className="icon">light mode icon lol</button>
+				</header>
+				<main className="home__main">
+					<h1>4 U 2 Write</h1>
+					<div className="home__dropdownContainer">
+						<select
+							className="home__dropdown"
+							name="writingTime"
+							id="writingTime"
+						>
+							<option value="none">
+								Choose your writing time
+							</option>
+						</select>
+						<label htmlFor="writingTime" className="sr-only">
+							Choose your writing time
+						</label>
+						<Link className="home__goButton button" to="/">
+							Go
+						</Link>
+					</div>
+				</main>
+				<aside className="home__aside">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Assumenda, labore, neque distinctio voluptatem vero
+						perferendis suscipit, ullam at ipsa earum cum cupiditate
+						perspiciatis laborum adipisci porro exercitationem
+						eveniet non iste!
+					</p>
+				</aside>
+				<footer className="home__footer">
+					created at juno with unending spite
+				</footer>
+			</div>
 		</div>
 	);
 };
