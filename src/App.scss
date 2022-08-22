@@ -1,38 +1,20 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+// *Setup Imports
+@import "./styles/setup.scss";
+@import "./styles/variables.scss";
+@import "./styles/typography.scss";
+@import "./styles/baseStyles.scss";
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+// *Theming Imports -- taken from https://medium.com/@sroskelley/theming-in-sass-67b8c0265e3f
+// @import "./styles/colors.scss";
+// @import "./styles/toggleButton.scss";
+// //from theming folder
+// @import "./styles/theming/colorDefinitions.scss";
+// @import "./styles/theming/dark.scss";
+// @import "./styles/theming/functions.scss";
+// @import "./styles/theming/light.scss";
+// @import "./styles/theming/mixins.scss";
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+// *Component Imports
+@import "./styles/home.scss";
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
