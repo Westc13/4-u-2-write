@@ -1,3 +1,4 @@
+
 // !IMPORT ZONE
 import Home from "./components/Home.js";
 import "./App.scss";
@@ -16,6 +17,4 @@ function App() {
 }
 
 export default App;
-
-// PSEUDO CODE
 
