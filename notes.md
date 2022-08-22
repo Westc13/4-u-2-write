@@ -7,6 +7,7 @@ TASKS
 -   implementing design css: _taimoor kevin_
 
 -   timer/keep writing reminder js: _chris taimoor_
+
 -   daily prompt js: _sadie kevin_
 
 -   night mode: _chris kevin_
@@ -39,7 +40,7 @@ writing prompt
 
 timer
 
--   input (either type:time or dropdown? dropdown might be easiest) to select how long they want to write for
+-   dropdown to select how long they want to write for
 -   print countdown to page somewhere
 
     -   display a fontawesome clock icon, on hover show time left

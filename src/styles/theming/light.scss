@@ -1,0 +1,9 @@
+@import "./functions";
+$light: (
+	// borderDark: color(tronDarkBlue),
+	// borderLight: color(tronLightBlue),
+	textDark: $dark,
+	textLight: $grey,
+	backgroundDark: $dark,
+	backgroundLight: $grey
+);

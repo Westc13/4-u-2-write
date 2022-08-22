@@ -1,0 +1,12 @@
+@import "./colors.scss";
+
+html {
+	// @include generateThemeVariables;
+	height: 100%;
+}
+
+.myButton {
+	@include theme(border, borderDark, 1px solid);
+	@include theme(background-color, backgroundLight);
+	@include theme(color, textDark);
+}
