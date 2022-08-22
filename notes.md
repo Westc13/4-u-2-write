@@ -1,7 +1,3 @@
-VARIA TO DO
-
--   configure logo to work on dark and light mode
-
 TASKS
 
 -   creating visual design: _taimoor_
@@ -11,6 +7,7 @@ TASKS
 -   implementing design css: _taimoor kevin_
 
 -   timer/keep writing reminder js: _chris taimoor_
+
 -   daily prompt js: _sadie kevin_
 
 -   night mode: _chris kevin_

@@ -1,5 +1,18 @@
+// *Setup Imports
 @import "./styles/setup.scss";
 @import "./styles/variables.scss";
 @import "./styles/typography.scss";
 @import "./styles/baseStyles.scss";
+
+// *Theming Imports
+// @import "./styles/colors.scss";
+// @import "./styles/toggleButton.scss";
+// //from theming folder
+// @import "./styles/theming/colorDefinitions.scss";
+// @import "./styles/theming/dark.scss";
+// @import "./styles/theming/functions.scss";
+// @import "./styles/theming/light.scss";
+// @import "./styles/theming/mixins.scss";
+
+// *Component Imports
 @import "./styles/home.scss";

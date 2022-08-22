@@ -1,14 +1,23 @@
 .home {
-	position: relative;
 	background-color: $dark;
 	height: 100vh;
-	display: flex;
-	flex-direction: column;
+	position: relative;
+
+	&__wrapper {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
 
 	&__header {
 		display: flex;
 		justify-content: space-between;
-		margin: 0 1%;
+		padding: 1%;
+	}
+
+	&__imageContainer {
+		background-color: $grey;
+		border-radius: 50%;
 	}
 
 	&__main {
@@ -21,6 +30,7 @@
 	&__dropdownContainer {
 		display: flex;
 		flex-direction: row;
+		margin: 0 auto;
 	}
 
 	&__goButton {

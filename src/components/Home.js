@@ -3,13 +3,24 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+	// !FUNCTION ZONE
+	// const toggleThemeType = () => {
+	// 	$("html").toggleClass("light").toggleClass("dark");
+	// };
+
 	return (
 		<div className="home">
 			<div className="wrapper">
 				<header className="home__header">
-					<img src={logo} alt="The 4 U 2 Write logo." />
-					<button className="icon">light mode icon lol</button>
+					<div className="home__imageContainer">
+						<img src={logo} alt="The 4 U 2 Write logo." />
+					</div>
+
+					<button className="myButton">
+						Toggle Light/Dark Theme
+					</button>
 				</header>
+
 				<main className="home__main">
 					<h1>4 U 2 Write</h1>
 					<div className="home__dropdownContainer">
@@ -30,6 +41,7 @@ const Home = () => {
 						</Link>
 					</div>
 				</main>
+
 				<aside className="home__aside">
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
