@@ -56,7 +56,9 @@ body {
     }
     .icon__Undo {
         height: 25px;
+        color: $dark;
     }
+
     &__confirmBtn {
         padding: 13px 40px;
         border: 2px solid $grey;
