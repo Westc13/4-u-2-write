@@ -1,6 +1,6 @@
-
 // !IMPORT ZONE
 import Home from "./components/Home.js";
+import Prompts from "./components/Prompts.js";
 import "./App.scss";
 import { Link, Routes, Route } from "react-router-dom";
 
@@ -10,11 +10,10 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				{/* //TODO update this with the writing page */}
-				<Route path="/writing" element={<Home />} />
+				<Route path="/prompts" element={<Prompts />} />
 			</Routes>
 		</div>
 	);
 }
 
 export default App;
-
