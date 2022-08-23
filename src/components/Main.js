@@ -1,16 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faUndo } from "@fortawesome/free-solid-svg-icons";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import toast from 'react-hot-toast';
+import Timer from './Timer';
 
 const Main = () => {
+  const notify = (e) => {
+    e.preventDefault()
+    toast.success("fireworks!!!");
+  }
+
   return (
       <div className="wrapper">
         <main className="Main">
           {/* //writing prompt */}
           <blockquote>Writing Prompt</blockquote>
           {/* Notification Clock */}
-          <div className="Main__timer">
-            <FontAwesomeIcon icon={faClock} className="icon__clock" />
-          </div>
+        <Timer timeslot={1} />
           {/* Writing area */}
           <form className="Main__form">
             <fieldset>
@@ -30,7 +35,7 @@ const Main = () => {
                 <span className="Main__undoBtn">
                   <FontAwesomeIcon icon={faUndo} className="icon__Undo"/>
                 </span>
-                <button className="Main__confirmBtn button">Confirm</button>
+                <button className="Main__confirmBtn button" onClick={notify}>Confirm</button>
               </div>
             </fieldset>
           </form>
