@@ -12,7 +12,7 @@ TASKS
 
 -   night mode: _chris kevin_
 
--   error sadie: _sadie taimoor_
+-   error: _sadie taimoor_
 
 -   pull requests: each feature the ppl who weren't working on it approve it
 
@@ -29,7 +29,7 @@ PSEUDO CODE
 
 writing prompt
 
--   have an array of objects writing prompts, some pre-written, users can add to it
+-   have an array of writing prompts, some pre-written, users can add to it
     -   somehow use date.now to select a new quote at random
     -   when it chooses a quote for the day, then delete that quote from the array so it doesn't come up twice
 -   print to page
