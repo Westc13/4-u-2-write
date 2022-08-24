@@ -1,8 +1,10 @@
 // !TYPOGRAPHY
 // *REM
-* {
-	font-size: 20;
+body {
+	font-size: 20px;
 	color: $grey;
+	// TODO TEMPORARY FIX
+	background-color: $dark;
 }
 
 h1,
