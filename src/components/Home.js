@@ -1,13 +1,17 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const Home = () => {
-	// !FUNCTION ZONE
-	// const toggleThemeType = () => {
-	// 	$("html").toggleClass("light").toggleClass("dark");
-	// };
-
+const Home = ({
+	prompts,
+	setPrompts,
+	POTD,
+	setPOTD,
+	currentDay,
+	setCurrentDay,
+	timeCheck,
+}) => {
 	return (
 		<div className="home">
 			<div className="wrapper">
@@ -36,7 +40,11 @@ const Home = () => {
 						<label htmlFor="writingTime" className="sr-only">
 							Choose your writing time
 						</label>
-						<Link className="home__goButton button" to="/">
+						<Link
+							className="home__goButton button"
+							to="/main"
+							onClick={timeCheck}
+						>
 							Go
 						</Link>
 					</div>
