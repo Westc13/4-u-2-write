@@ -5,33 +5,34 @@ import toast from "react-hot-toast";
 
 const Form = () => {
   const [userText, setUserText] = useState("");
-  const [timer, setTimer] = useState(0);
+  const [isIdle, setIdle] = useState(true);
   const lapse = 15000;
 
-  let myInterval = () => {
-    setInterval(() => {
-      toast("15 seconds");
-    }, lapse);
+  const handleKeyUp = () => {
+    setIdle(true);
   };
 
   const handleUserText = (e) => {
-    console.log(e);
     setUserText(e.target.value);
+    setIdle(false);
   };
 
   useEffect(() => {
-    myInterval();
+    const myInterval = setInterval(() => {
+      if (!isIdle) clearInterval(myInterval);
+      else toast("15 seconds");
+    }, lapse);
 
     return () => {
       clearInterval(myInterval);
     };
-  }, []);
+  }, [isIdle]);
 
-  const inputChecker = () => {};
+  //   const inputChecker = () => {};
 
-  const clearLapse = () => {
-    return clearInterval(myInterval);
-  };
+  //   const clearLapse = () => {
+  //     return clearInterval(myInterval);
+  //   };
 
   //on keyUp start checker (setTimeout)
   //on keyDown stop checker clearInterval reset lapse time
@@ -48,8 +49,8 @@ const Form = () => {
           cols="30"
           rows="30"
           value={userText}
-          onKeyDown={clearLapse}
           onChange={handleUserText}
+          onKeyUp={handleKeyUp}
         ></textarea>
       </fieldset>
       <fieldset className="Main__promptfield">
