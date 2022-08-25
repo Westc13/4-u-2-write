@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
+  const { time } = useContext(TimerContext);
   const [userText, setUserText] = useState("");
   const [isIdle, setIsIdle] = useState(true);
   const idleInterval = 15000;
@@ -18,9 +20,16 @@ const Form = () => {
   };
 
   useEffect(() => {
+    let countDown = time;
     const myInterval = setInterval(() => {
-      if (!isIdle) clearInterval(myInterval);
-      else toast("15 seconds");
+      if (countDown > 0) {
+        if (isIdle) toast("15 seconds");
+        else clearInterval(myInterval);
+        countDown -= 15;
+      }
+      if (countDown === 0) {
+        clearInterval(myInterval);
+      }
     }, idleInterval);
 
     return () => {
@@ -51,6 +60,12 @@ const Form = () => {
           value={userText}
           onChange={handleChange}
           onKeyUp={handleKeyUp}
+          onMouseUp={() => {
+            setIsIdle(true);
+          }}
+          onMouseDown={() => {
+            setIsIdle(false);
+          }}
         ></textarea>
       </fieldset>
       <fieldset className="Main__promptfield">
