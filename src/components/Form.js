@@ -5,23 +5,23 @@ import toast from "react-hot-toast";
 
 const Form = () => {
   const [userText, setUserText] = useState("");
-  const [isIdle, setIdle] = useState(true);
-  const lapse = 15000;
+  const [isIdle, setIsIdle] = useState(true);
+  const idleInterval = 15000;
 
-  const handleKeyUp = () => {
-    setIdle(true);
+  const handleChange = (e) => {
+    setUserText(e.target.value);
+    setIsIdle(false);
   };
 
-  const handleUserText = (e) => {
-    setUserText(e.target.value);
-    setIdle(false);
+  const handleKeyUp = () => {
+    setIsIdle(true);
   };
 
   useEffect(() => {
     const myInterval = setInterval(() => {
       if (!isIdle) clearInterval(myInterval);
       else toast("15 seconds");
-    }, lapse);
+    }, idleInterval);
 
     return () => {
       clearInterval(myInterval);
@@ -45,11 +45,11 @@ const Form = () => {
         </label>
         <textarea
           name="journal"
-          id=""
+          id="journal"
           cols="30"
           rows="30"
           value={userText}
-          onChange={handleUserText}
+          onChange={handleChange}
           onKeyUp={handleKeyUp}
         ></textarea>
       </fieldset>
