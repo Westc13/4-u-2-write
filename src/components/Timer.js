@@ -17,7 +17,8 @@ const Timer = () => {
   const [startingTime, setStartingTime] = useState(time);
 
   useEffect(() => {
-    // countDownStart()
+    // countDownStart
+
     const timer = setInterval(() => {
       let interval = 5;
       if (time > 0) {
@@ -42,8 +43,11 @@ const Timer = () => {
 
   return (
     <div className="Main__timer">
-      <p style={{ color: "red" }}>{time}</p>
-      {/* <FontAwesomeIcon icon={faClock} className="icon__clock" /> */}
+      {time > 120 ? (
+        <FontAwesomeIcon icon={faClock} className="icon__clock" />
+      ) : (
+        <p style={{ color: "red" }}>{time}</p>
+      )}
     </div>
   );
 };
