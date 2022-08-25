@@ -33,19 +33,19 @@
 		margin: 0 auto;
 	}
 
-	&__goButton {
-		border: 1px solid $grey;
-		background-color: $dark;
-		color: $grey;
-		text-decoration: none;
+	// &__goButton {
+	// 	border: 1px solid $grey;
+	// 	background-color: $dark;
+	// 	color: $grey;
+	// 	text-decoration: none;
 
-		&:hover,
-		&:focus {
-			border: 1px solid $lightBlue;
-			background-color: $grey;
-			color: $dark;
-		}
-	}
+	// 	&:hover,
+	// 	&:focus {
+	// 		border: 1px solid $lightBlue;
+	// 		background-color: $grey;
+	// 		color: $dark;
+	// 	}
+	// }
 
 	&__aside {
 		display: flex;
@@ -58,15 +58,5 @@
 			color: $dark;
 			padding: 5%;
 		}
-	}
-
-	&__footer {
-		background-color: $grey;
-		color: $dark;
-		text-align: center;
-
-		position: absolute;
-		bottom: 0;
-		width: 100vw;
 	}
 }

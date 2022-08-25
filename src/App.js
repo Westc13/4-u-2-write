@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import Prompts from "./components/Prompts.js";
 import Home from "./components/Home.js";
 import Main from "./components/Main.js";
+import firebase from "./firebase";
+import { getDatabase, ref, onValue, push } from "firebase/database";
 
 function App() {
 	// !STATE ZONE
@@ -15,16 +17,20 @@ function App() {
 	const [currentDay, setCurrentDay] = useState("");
 	// prompt of the day
 	const [POTD, setPOTD] = useState("");
-	// userInput
-	const [userInput, setUserInput] = useState([]);
 
-	// !PROMPT LOGIC ZONE
-	// *component mount
+	// !PROMPT USE EFFECT ZONE
+	// *component mount set prompts state from firebase + current day
 	useEffect(() => {
-		// TODO get the array from firebase
-		// set prompts state
-		setPrompts(["first prompt", "second prompt", "third prompt"]);
+		// get firebase going
+		const database = getDatabase(firebase);
+		const dbRef = ref(database);
+		onValue(dbRef, (response) => {
+			const data = response.val();
+			console.log(data);
+			setPrompts(data);
+		});
 
+		// set current day state
 		let statelessCurrentDay = new Date().getDate();
 		// make it stateful
 		setCurrentDay(statelessCurrentDay);
@@ -43,12 +49,38 @@ function App() {
 			localStorage.setItem("storedCurrentDay", currentDay);
 		} else {
 			console.log("you are on the same day");
+			setPOTD(prompts[0]);
 		}
 	}, [currentDay]);
 
-	// *fn that runs when the newDay state changes
+	// *when prompts changes -> push to firebase
+	// useEffect(() => {
+	// 	// *Create references to the database
+	// 	const database = getDatabase(firebase);
+	// 	const dbRef = ref(database);
+
+	// 	// update firebase dp with newly updated prompts array state
+	// 	push(dbRef, prompts);
+	// }, [prompts]);
 
 	// !FUNCTION ZONE
+	// *Create references to the database
+	// const database = getDatabase(firebase);
+	// const dbRef = ref(database);
+
+	// // when db value changes,
+	// onValue(dbRef, (response) => {
+	// 	const data = response.val();
+	// 	console.log(data);
+
+	// 	// TODO re-enable this
+	// 	// update prompts state to hold our prompts from firebase that were stored in the array we made
+	// 	setPrompts(data);
+	// });
+
+	// DEPRECATED: hardcoding prompts state for testing
+	// setPrompts(["first prompt", "second prompt", "third prompt"]);
+
 	// *Update Prompt
 	// *localstorage time listener
 	const timeCheck = () => {
@@ -93,6 +125,9 @@ function App() {
 					}
 				/>
 			</Routes>
+			<footer className="footer">
+				created at juno with unending spite
+			</footer>
 		</div>
 	);
 }

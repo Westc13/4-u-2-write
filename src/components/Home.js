@@ -41,7 +41,7 @@ const Home = ({
 							Choose your writing time
 						</label>
 						<Link
-							className="home__goButton button"
+							className="home__goButton darkBtn"
 							to="/main"
 							onClick={timeCheck}
 						>
@@ -59,9 +59,6 @@ const Home = ({
 						eveniet non iste!
 					</p>
 				</aside>
-				<footer className="home__footer">
-					created at juno with unending spite
-				</footer>
 			</div>
 		</div>
 	);

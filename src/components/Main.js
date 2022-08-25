@@ -1,8 +1,9 @@
 import Timer from "./Timer";
 import Form from "./Form";
 import Prompts from "./Prompts";
+import AddPrompt from "./AddPrompt";
 
-const Main = ({ POTD }) => {
+const Main = ({ POTD, prompts, setPrompts,  }) => {
 	return (
 		<div className="wrapper">
 			<main className="Main">
@@ -13,6 +14,11 @@ const Main = ({ POTD }) => {
 				<Timer timeslot={1} />
 				{/* Writing area */}
 				<Form />
+				<AddPrompt
+					prompts={prompts}
+					setPrompts={setPrompts}
+					
+				/>
 			</main>
 		</div>
 	);
