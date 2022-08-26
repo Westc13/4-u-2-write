@@ -9,8 +9,8 @@ const Prompts = () => {
 	const [currentDay, setCurrentDay] = useState("");
 	// prompt of the day
 	const [POTD, setPOTD] = useState("");
-	// newDay
-	const [newDay, setNewDay] = useState("");
+	// userInput
+	const [userInput, setUserInput] = useState([]);
 
 	// !USE EFFECT ZONE
 	// *component mount
@@ -24,19 +24,9 @@ const Prompts = () => {
 		setCurrentDay(statelessCurrentDay);
 	}, []);
 
-	// *fn that runs when the newDay state changes
-
-	// !FUNCTION ZONE
-	// *Update Prompt
-	// *localstorage time listener
-	const timeCheck = () => {
-		// declare current day in a variable
-		let statelessCurrentDay = new Date().getDate();
-		setNewDay(statelessCurrentDay.toString());
-		console.log(newDay);
-		console.log(localStorage.storedCurrentDay, newDay);
-
-		if (localStorage.storedCurrentDay !== newDay) {
+	// *on currentDay change -> change POTD
+	useEffect(() => {
+		if (localStorage.storedCurrentDay !== currentDay) {
 			// run the new prompt fn
 			// updatePrompt();
 			setPOTD(prompts[0]);
@@ -44,10 +34,22 @@ const Prompts = () => {
 			// delete that entry from the array
 			prompts.shift();
 			// set localstorage to current date time
-			localStorage.setItem("storedCurrentDay", statelessCurrentDay);
+			localStorage.setItem("storedCurrentDay", currentDay);
 		} else {
 			console.log("you are on the same day");
 		}
+	}, [currentDay]);
+
+	// *fn that runs when the newDay state changes
+
+	// !FUNCTION ZONE
+	// *Update Prompt
+	// *localstorage time listener
+	const timeCheck = () => {
+		// set the currentDay state to the current day (put it to string cuz that's how localstorage stores it)
+		setCurrentDay(new Date().getDate().toString());
+		console.log(currentDay);
+		console.log(localStorage.storedCurrentDay, currentDay);
 	};
 
 	// !ADD USER QUOTE
