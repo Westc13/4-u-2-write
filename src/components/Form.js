@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import TimerContext from "../contexts/TimerContext";
 import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
+  const { time } = useContext(TimerContext);
   const { time } = useContext(TimerContext);
   const [userText, setUserText] = useState("");
   const [isIdle, setIsIdle] = useState(true);
@@ -20,6 +22,7 @@ const Form = () => {
   };
 
   useEffect(() => {
+    let countDown = time;
     let countDown = time;
     const myInterval = setInterval(() => {
       if (countDown > 0) {
@@ -54,12 +57,18 @@ const Form = () => {
         </label>
         <textarea
           name="journal"
-          id="journal"
+          id="journaljournal"
           cols="30"
           rows="30"
           value={userText}
           onChange={handleChange}
           onKeyUp={handleKeyUp}
+          onMouseUp={() => {
+            setIsIdle(true);
+          }}
+          onMouseDown={() => {
+            setIsIdle(false);
+          }}
           onMouseUp={() => {
             setIsIdle(true);
           }}

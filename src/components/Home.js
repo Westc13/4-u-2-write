@@ -1,17 +1,18 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useContext, useState, useEffect } from "react";
+import TimerContext from "../contexts/TimerContext";
 import TimerContext from "../contexts/TimerContext";
 
 const Home = ({
-	prompts,
-	setPrompts,
-	POTD,
-	setPOTD,
-	currentDay,
-	setCurrentDay,
-	timeCheck,
+  prompts,
+  setPrompts,
+  POTD,
+  setPOTD,
+  currentDay,
+  setCurrentDay,
+  timeCheck,
 }) => {
 	const { setTime } = useContext(TimerContext);
 
@@ -77,21 +78,20 @@ const Home = ({
 					</form>
 				</main>
 
-				<aside className="home__aside">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Assumenda, labore, neque distinctio voluptatem vero
-						perferendis suscipit, ullam at ipsa earum cum cupiditate
-						perspiciatis laborum adipisci porro exercitationem
-						eveniet non iste!
-					</p>
-				</aside>
-				<footer className="home__footer">
-					created at juno with unending spite
-				</footer>
-			</div>
-		</div>
-	);
+        <aside className="home__aside">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
+            labore, neque distinctio voluptatem vero perferendis suscipit, ullam
+            at ipsa earum cum cupiditate perspiciatis laborum adipisci porro
+            exercitationem eveniet non iste!
+          </p>
+        </aside>
+        <footer className="home__footer">
+          created at juno with unending spite
+        </footer>
+      </div>
+    </div>
+  );
 };
 
 export default Home;
