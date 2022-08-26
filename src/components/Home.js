@@ -55,7 +55,7 @@ const Home = ({
               <option value="placeholder" disabled>
                 Choose your writing time
               </option>
-              <option value={15}>15 minutes</option>
+              <option value={130}>15 minutes</option>
               <option value={1800}>30 minutes</option>
               <option value={2700}>45 minutes</option>
               <option value={3600}>60 minutes</option>
@@ -64,9 +64,9 @@ const Home = ({
             <label htmlFor="writingTime" className="sr-only">
               Choose your writing time
             </label>
-            <button className="home__goButton button">
-              <Link to="/main">Go</Link>
-            </button>
+            <Link to="/main">
+              <button className="home__goButton button">Go</button>
+            </Link>
           </form>
         </main>
 
