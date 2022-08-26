@@ -12,15 +12,18 @@ const Home = ({
   currentDay,
   setCurrentDay,
   timeCheck,
+  handleToggle,
+  darkMode,
+  setDarkMode,
 }) => {
   const { setTime } = useContext(TimerContext);
 
   const [userSelection, setUserSelection] = useState("placeholder");
-  const [darkMode, setDarkMode] = useState(true);
+  // const [darkMode, setDarkMode] = useState(true);
   
-  const handleToggle = () => {
-    setDarkMode(!darkMode)    
-  }
+  // const handleToggle = () => {
+  //   setDarkMode(!darkMode)    
+  // }
 
   const handleOnChange = (e) => {
     setUserSelection(e.target.value);

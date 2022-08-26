@@ -2,9 +2,9 @@ import Timer from "./Timer";
 import Form from "./Form";
 import Prompts from "./Prompts";
 
-const Main = ({ POTD }) => {
+const Main = ({ POTD, darkMode }) => {
 	return (
-		<div className="wrapper">
+		<div className={darkMode ? 'home darkMode' : 'home lightMode'}>
 			<main className="Main">
 				{/* //writing prompt */}
 				<Prompts POTD={POTD} />
