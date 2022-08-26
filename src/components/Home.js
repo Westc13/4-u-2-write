@@ -1,7 +1,8 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
+import TimerContext from "../contexts/TimerContext";
 
 const Home = ({
 	prompts,
@@ -12,6 +13,24 @@ const Home = ({
 	setCurrentDay,
 	timeCheck,
 }) => {
+	const { setTime } = useContext(TimerContext);
+
+	const [userSelection, setUserSelection] = useState("placeholder");
+
+	const handleOnChange = (e) => {
+		setUserSelection(e.target.value);
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		timeCheck();
+	};
+
+	useEffect(() => {
+		setTime(userSelection);
+	}, [userSelection]);
+
 	return (
 		<div className="home">
 			<div className="wrapper">
@@ -27,27 +46,35 @@ const Home = ({
 
 				<main className="home__main">
 					<h1>4 U 2 Write</h1>
-					<div className="home__dropdownContainer">
+					<form
+						className="home__dropdownContainer"
+						onSubmit={handleSubmit}
+					>
 						<select
 							className="home__dropdown"
 							name="writingTime"
 							id="writingTime"
+							onChange={handleOnChange}
+							value={userSelection}
 						>
-							<option value="none">
+							<option value="placeholder" disabled>
 								Choose your writing time
 							</option>
+							<option value={130}>15 minutes</option>
+							<option value={1800}>30 minutes</option>
+							<option value={2700}>45 minutes</option>
+							<option value={3600}>60 minutes</option>
+							{/* <option value="unlimited">Unlimited</option> */}
 						</select>
 						<label htmlFor="writingTime" className="sr-only">
 							Choose your writing time
 						</label>
-						<Link
-							className="home__goButton darkBtn"
-							to="/main"
-							onClick={timeCheck}
-						>
-							Go
+						<Link to="/main">
+							<button className="home__goButton darkBtn">
+								Go
+							</button>
 						</Link>
-					</div>
+					</form>
 				</main>
 
 				<aside className="home__aside">
@@ -59,6 +86,9 @@ const Home = ({
 						eveniet non iste!
 					</p>
 				</aside>
+				<footer className="home__footer">
+					created at juno with unending spite
+				</footer>
 			</div>
 		</div>
 	);
