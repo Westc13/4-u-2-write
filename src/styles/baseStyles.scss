@@ -23,9 +23,12 @@ select {
     background-color: #eae5e9 !important;
     
   }
-  &.home__aside p {
+  .home__aside p {
     background-color: $dark !important;
     color: $grey !important;
+  }
+  .home__imageContainer {
+    background-color: #23395b;
   }
 }
 
