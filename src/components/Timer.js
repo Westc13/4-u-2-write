@@ -13,8 +13,29 @@ const Timer = () => {
   // setTimeout(()=>{alert("times up, you are dead");}, timetest)
 
   const { time, setTime } = useContext(TimerContext);
+  const [showTime, setShowTime] = useState(false);
 
   const [startingTime, setStartingTime] = useState(time);
+
+  //calculate minutes in the seconds
+  const formatTime = (time) => {
+    const minutes = Math.floor((time % 3600) / 60);
+    const seconds = Math.floor((time % 3600) % 60);
+
+    const minutesDisplay = minutes > 0 ? minutes : "";
+    const secondsDisplay = seconds < 10 ? `0${seconds}` : seconds;
+    return `${minutesDisplay}:${secondsDisplay}`;
+  };
+
+  //handle mouse over
+  const handleOnMouseEnter = () => {
+    setShowTime(true);
+  };
+
+  //handle mouse leave
+  const handleOnMouseLeave = () => {
+    setShowTime(false);
+  };
 
   useEffect(() => {
     // countDownStart
@@ -42,11 +63,20 @@ const Timer = () => {
   });
 
   return (
-    <div className="Main__timer">
+    <div
+      className="Main__timer"
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
+    >
+      {/* if time is greater than 2 minutes show clock icon else see if showTime state is true then show clock icon as well.  */}
       {time > 120 ? (
-        <FontAwesomeIcon icon={faClock} className="icon__clock" />
+        showTime ? (
+          <p style={{ color: "red" }}>{formatTime(time)}</p>
+        ) : (
+          <FontAwesomeIcon icon={faClock} className="icon__clock" />
+        )
       ) : (
-        <p style={{ color: "red" }}>{time}</p>
+        <p style={{ color: "red" }}>{formatTime(time)}</p>
       )}
     </div>
   );
