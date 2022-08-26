@@ -16,6 +16,11 @@ const Home = ({
   const { setTime } = useContext(TimerContext);
 
   const [userSelection, setUserSelection] = useState("placeholder");
+  const [darkMode, setDarkMode] = useState(true);
+  
+  const handleToggle = () => {
+    setDarkMode(!darkMode)    
+  }
 
   const handleOnChange = (e) => {
     setUserSelection(e.target.value);
@@ -31,21 +36,24 @@ const Home = ({
     setTime(userSelection);
   }, [userSelection]);
 
+
+
   return (
-    <div className="home">
+    <div className={darkMode ? 'home darkMode' : 'home lightMode'}>
       <div className="wrapper">
         <header className="home__header">
           <div className="home__imageContainer">
             <img src={logo} alt="The 4 U 2 Write logo." />
           </div>
 
-          <button className="myButton">Toggle Light/Dark Theme</button>
+          <button className="myButton" onClick={handleToggle} darkMode={darkMode}>Toggle Light/Dark Theme</button>
         </header>
 
         <main className="home__main">
           <h1>4 U 2 Write</h1>
           <form className="home__dropdownContainer" onSubmit={handleSubmit}>
             <select
+
               className="home__dropdown"
               name="writingTime"
               id="writingTime"
