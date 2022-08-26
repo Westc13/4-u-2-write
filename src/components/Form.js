@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
 	const [userText, setUserText] = useState("");
