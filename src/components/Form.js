@@ -1,27 +1,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
+  const { time } = useContext(TimerContext);
   const [userText, setUserText] = useState("");
-  const [isIdle, setIdle] = useState(true);
-  const lapse = 15000;
+  const [isIdle, setIsIdle] = useState(true);
+  const idleInterval = 15000;
 
-  const handleKeyUp = () => {
-    setIdle(true);
+  const handleChange = (e) => {
+    setUserText(e.target.value);
+    setIsIdle(false);
   };
 
-  const handleUserText = (e) => {
-    setUserText(e.target.value);
-    setIdle(false);
+  const handleKeyUp = () => {
+    setIsIdle(true);
   };
 
   useEffect(() => {
+    let countDown = time;
     const myInterval = setInterval(() => {
-      if (!isIdle) clearInterval(myInterval);
-      else toast("15 seconds");
-    }, lapse);
+      if (countDown > 0) {
+        if (isIdle) toast("15 seconds");
+        else clearInterval(myInterval);
+        countDown -= 15;
+      }
+      if (countDown === 0) {
+        clearInterval(myInterval);
+      }
+    }, idleInterval);
 
     return () => {
       clearInterval(myInterval);
@@ -45,12 +54,18 @@ const Form = () => {
         </label>
         <textarea
           name="journal"
-          id=""
+          id="journal"
           cols="30"
           rows="30"
           value={userText}
-          onChange={handleUserText}
+          onChange={handleChange}
           onKeyUp={handleKeyUp}
+          onMouseUp={() => {
+            setIsIdle(true);
+          }}
+          onMouseDown={() => {
+            setIsIdle(false);
+          }}
         ></textarea>
       </fieldset>
       <fieldset className="Main__promptfield">
