@@ -1,30 +1,38 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
-import { useContext, useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
-import TimerContext from "../contexts/TimerContext";
+import toast from "react-hot-toast";
+import { FaSun } from "react-icons/fa";
 
 const Home = ({
-  prompts,
-  setPrompts,
-  POTD,
-  setPOTD,
-  currentDay,
-  setCurrentDay,
-  timeCheck,
+	prompts,
+	setPrompts,
+	POTD,
+	setPOTD,
+	currentDay,
+	setCurrentDay,
+	timeCheck,
 }) => {
+	// !STATE ZONE
 	const { setTime } = useContext(TimerContext);
-
 	const [userSelection, setUserSelection] = useState("placeholder");
+	// *Navigate
+	const navigate = useNavigate();
 
+	// !FUNCTION ZONE
 	const handleOnChange = (e) => {
 		setUserSelection(e.target.value);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
+		if (userSelection === "placeholder") {
+			toast.error("You must choose a writing time.");
+		} else {
+			navigate("/main");
+		}
 		timeCheck();
 	};
 
@@ -41,7 +49,7 @@ const Home = ({
 					</div>
 
 					<button className="myButton">
-						Toggle Light/Dark Theme
+						<FaSun />
 					</button>
 				</header>
 
@@ -61,6 +69,7 @@ const Home = ({
 							<option value="placeholder" disabled>
 								Choose your writing time
 							</option>
+							{/* //TODO update this to 15 mins */}
 							<option value={130}>15 minutes</option>
 							<option value={1800}>30 minutes</option>
 							<option value={2700}>45 minutes</option>
@@ -70,28 +79,23 @@ const Home = ({
 						<label htmlFor="writingTime" className="sr-only">
 							Choose your writing time
 						</label>
-						<Link to="/main">
-							<button className="home__goButton darkBtn">
-								Go
-							</button>
-						</Link>
+
+						<button className="home__goButton lightBtn">Go</button>
 					</form>
 				</main>
 
-        <aside className="home__aside">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-            labore, neque distinctio voluptatem vero perferendis suscipit, ullam
-            at ipsa earum cum cupiditate perspiciatis laborum adipisci porro
-            exercitationem eveniet non iste!
-          </p>
-        </aside>
-        <footer className="home__footer">
-          created at juno with unending spite
-        </footer>
-      </div>
-    </div>
-  );
+				<aside className="home__aside">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Assumenda, labore, neque distinctio voluptatem vero
+						perferendis suscipit, ullam at ipsa earum cum cupiditate
+						perspiciatis laborum adipisci porro exercitationem
+						eveniet non iste!
+					</p>
+				</aside>
+			</div>
+		</div>
+	);
 };
 
 export default Home;
