@@ -64,9 +64,9 @@ const Home = ({
             <label htmlFor="writingTime" className="sr-only">
               Choose your writing time
             </label>
-            <button className="home__goButton button">
-              <Link to="/main">Go</Link>
-            </button>
+            <Link to="/main">
+              <button className="home__goButton button">Go</button>
+            </Link>
           </form>
         </main>
 
