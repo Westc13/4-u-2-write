@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Error from "./components/Error";
 
 function App() {
+
   // !STATE ZONE
   // list of prompts
   const [prompts, setPrompts] = useState([]);
@@ -143,6 +144,7 @@ function App() {
       <Footer />
     </div>
   );
+
 }
 
 export default App;

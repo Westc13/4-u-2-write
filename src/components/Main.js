@@ -38,6 +38,7 @@ const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
       </main>
     </div>
   );
+
 };
 
 export default Main;

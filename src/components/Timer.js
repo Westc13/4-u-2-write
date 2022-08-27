@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FaClock } from 'react-icons/fa';
 import { useContext, useState, useEffect } from "react";
 // import toast from "react-hot-toast";
 import TimerContext from "../contexts/TimerContext";
@@ -62,6 +61,7 @@ const Timer = () => {
     };
   });
 
+
   return (
     <div
       className="Main__timer"
@@ -80,5 +80,6 @@ const Timer = () => {
       )}
     </div>
   );
+
 };
 export default Timer;

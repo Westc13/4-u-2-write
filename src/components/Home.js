@@ -15,6 +15,7 @@ const Home = ({
   setCurrentDay,
   timeCheck,
   darkMode,
+
   handleToggle,
 }) => {
   // !STATE ZONE
@@ -41,6 +42,7 @@ const Home = ({
   useEffect(() => {
     setTime(userSelection);
   }, [userSelection]);
+
 
   return (
     <div className={!darkMode ? "home lightMode" : "home darkMode"}>
