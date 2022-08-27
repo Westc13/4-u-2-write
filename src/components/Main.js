@@ -5,9 +5,9 @@ import Prompts from "./Prompts";
 import AddPrompt from "./AddPrompt";
 import { Link } from "react-router-dom";
 
-const Main = ({ POTD, prompts, setPrompts }) => {
+const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
 	return (
-		<div className="wrapper">
+		<div className={!darkMode ? 'home lightMode' : 'home darkMode'}>
 			<main className="Main">
 				<div className="Main__backButton">
 					<Link className="lightBtn" to="/">

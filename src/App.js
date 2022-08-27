@@ -77,6 +77,11 @@ function App() {
 		console.log(currentDay);
 		console.log(localStorage.storedCurrentDay, currentDay);
 	};
+	const [darkMode, setDarkMode] = useState(true);
+  
+	const handleToggle = () => {
+	  setDarkMode(!darkMode)    
+	}
 
 	// !RETURN
 	return (
@@ -87,6 +92,7 @@ function App() {
 					path="/"
 					element={
 						<Home
+							handleToggle={handleToggle}
 							prompts={prompts}
 							setPrompts={setPrompts}
 							POTD={POTD}
@@ -94,6 +100,7 @@ function App() {
 							currentDay={currentDay}
 							setCurrentDay={setCurrentDay}
 							timeCheck={timeCheck}
+							darkMode={darkMode}
 						/>
 					}
 				/>
@@ -102,6 +109,7 @@ function App() {
 					path="/main"
 					element={
 						<Main
+							handleToggle={handleToggle}
 							prompts={prompts}
 							setPrompts={setPrompts}
 							POTD={POTD}
@@ -109,6 +117,7 @@ function App() {
 							currentDay={currentDay}
 							setCurrentDay={setCurrentDay}
 							timeCheck={timeCheck}
+							darkMode={darkMode}
 						/>
 					}
 				/>

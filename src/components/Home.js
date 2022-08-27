@@ -14,6 +14,8 @@ const Home = ({
 	currentDay,
 	setCurrentDay,
 	timeCheck,
+  darkMode,
+  handleToggle,
 }) => {
 	// !STATE ZONE
 	const { setTime } = useContext(TimerContext);
@@ -41,14 +43,14 @@ const Home = ({
 	}, [userSelection]);
 
 	return (
-		<div className="home">
+		<div className={!darkMode ? 'home lightMode' : 'home darkMode'}>
 			<div className="wrapper">
 				<header className="home__header">
 					<div className="home__imageContainer">
 						<img src={logo} alt="The 4 U 2 Write logo." />
 					</div>
 
-					<button className="myButton">
+					<button className="myButton"onClick={handleToggle}>
 						<FaSun />
 					</button>
 				</header>
