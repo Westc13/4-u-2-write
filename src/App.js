@@ -158,3 +158,31 @@ export default App;
 
 // DEPRECATED: hardcoding prompts state for testing
 // setPrompts(["first prompt", "second prompt", "third prompt"]);
+
+// !DEPRECATION ZONE
+// *when prompts changes -> push to firebase
+// useEffect(() => {
+// 	// *Create references to the database
+// 	const database = getDatabase(firebase);
+// 	const dbRef = ref(database);
+
+// 	// update firebase dp with newly updated prompts array state
+// 	push(dbRef, prompts);
+// }, [prompts]);
+
+// *Create references to the database
+// const database = getDatabase(firebase);
+// const dbRef = ref(database);
+
+// // when db value changes,
+// onValue(dbRef, (response) => {
+// 	const data = response.val();
+// 	console.log(data);
+
+// 	// TODO re-enable this
+// 	// update prompts state to hold our prompts from firebase that were stored in the array we made
+// 	setPrompts(data);
+// });
+
+// DEPRECATED: hardcoding prompts state for testing
+// setPrompts(["first prompt", "second prompt", "third prompt"]);
