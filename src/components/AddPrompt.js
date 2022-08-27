@@ -1,6 +1,4 @@
 // !IMPORT ZONE
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import firebase from "../firebase";
 import { getDatabase, ref, onValue, set, push } from "firebase/database";

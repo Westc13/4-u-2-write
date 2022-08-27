@@ -6,7 +6,7 @@ import AddPrompt from "./AddPrompt";
 import { Link } from "react-router-dom";
 
 
-const Main = ({ POTD, prompts, setPrompts }) => {
+const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
 
 	return (
 		<div className={darkMode ? 'home darkMode' : 'home lightMode'}>

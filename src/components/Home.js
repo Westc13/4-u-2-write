@@ -30,17 +30,6 @@ const Home = ({
 		setUserSelection(e.target.value);
 	};
 
-  const [userSelection, setUserSelection] = useState("placeholder");
-  // const [darkMode, setDarkMode] = useState(true);
-
-  
-  // const handleToggle = () => {
-  //   setDarkMode(!darkMode) 
-  // }
-
-  const handleOnChange = (e) => {
-    setUserSelection(e.target.value);
-  };
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -56,18 +45,6 @@ const Home = ({
 		setTime(userSelection);
 	}, [userSelection]);
 
-	return (
-		<div className="home">
-			<div className="wrapper">
-				<header className="home__header">
-					<div className="home__imageContainer">
-						<img src={logo} alt="The 4 U 2 Write logo." />
-					</div>
-
-					<button className="myButton">
-						<FaSun />
-					</button>
-				</header>
 
 
 

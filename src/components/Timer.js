@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FaClock } from 'react-icons/fa';
 import { useContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import TimerContext from "../contexts/TimerContext";
@@ -73,7 +72,7 @@ const Timer = () => {
 				showTime ? (
 					<p>{formatTime(time)}</p>
 				) : (
-					<FontAwesomeIcon icon={faClock} className="icon__clock" />
+					<FaClock />
 				)
 			) : (
 				<p>{formatTime(time)}</p>
