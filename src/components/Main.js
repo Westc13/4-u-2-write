@@ -3,9 +3,20 @@ import Instructions from "./Instructions";
 import Form from "./Form";
 import Prompts from "./Prompts";
 import AddPrompt from "./AddPrompt";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import TimerContext from "../contexts/TimerContext";
 
 const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
+  const { time } = useContext(TimerContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(time, POTD);
+    if (!time || !POTD) {
+      console.log("please work");
+      navigate("/");
+    }
+  }, []);
   return (
     <div className={!darkMode ? "home lightMode" : "home darkMode"}>
       <main className="Main">
