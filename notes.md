@@ -14,6 +14,8 @@ TASKS
 
 -   error: _sadie taimoor_
 
+-   add instructions
+
 -   pull requests: each feature the ppl who weren't working on it approve it
 
 SCHED

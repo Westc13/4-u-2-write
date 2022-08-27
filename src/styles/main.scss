@@ -1,69 +1,102 @@
-body {
-    background-color: $dark;
-    color: $grey;
-}
 .Main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    &__timer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: $grey;
-        .icon__clock {
-            height: 60px;
-            padding: 30px;
-            color: $dark;
-        }
-    }
-    &__form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        fieldset {
-            border: none;
-            padding: 0;
-        }
-    }
-    &__promptfield {
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: 40px;
-    }
-    &__addPrompt {
-        position: relative;
-    }
-    
-    &__inputPrompt {
-        width: 400px;
-        padding: 13px 40px;
-        font-size: 1.2rem;
-    }
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: "Lato", sans-serif;
+	font-weight: bold;
+	// *Back Button
+	&__backButton {
+		position: absolute;
+		right: 0;
+		top: 15px;
+	}
+	// *Timer
+	&__timer {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: 0;
+		background-color: $grey;
+		height: 80px;
+		width: 80px;
+		text-align: center;
 
-    textarea {
-        width: 60vw;
-        resize: none;
-    }
-    &__undoBtn {
-        position: absolute;
-        color: $dark;
-        top:25%;
-        right:158px;
-    }
-    .icon__Undo {
-        height: 25px;
-        color: $dark;
-    }
+		p {
+			color: $dark;
+		}
+		.icon__clock {
+			height: 90%;
+			color: $dark;
+		}
+	}
 
-    &__confirmBtn {
-        padding: 13px 40px;
-        border: 2px solid $grey;
-        background-color: transparent;
-        color: $grey;
-        margin-left: 5px;
-    }
+	// *Writing Area
+	&__form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		fieldset {
+			border: none;
+			padding: 0;
+		}
+	}
+
+	textarea {
+		width: 60vw;
+		resize: none;
+	}
+
+	// *Add Prompt
+	&__promptfield {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		overflow: hidden;
+		transition: 300ms ease-in-out;
+		text-align: center;
+		margin-bottom: 5%;
+	}
+	&__btnContainer {
+		z-index: 20;
+		margin: 2% auto;
+	}
+	&__addPrompt {
+		position: relative;
+		z-index: 1;
+		transition: 1s;
+	}
+
+	// animation toggle
+	&__addPrompt--animation {
+		transform: translateX(-2000px);
+	}
+
+	&__inputPrompt {
+		width: 400px;
+		padding: 13px 40px;
+		font-size: 1.2rem;
+	}
+
+	// &__undoBtn {
+	// 	position: absolute;
+	// 	color: $dark;
+	// 	top: 25%;
+	// 	right: 158px;
+	// }
+	// .icon__Undo {
+	// 	height: 25px;
+	// 	color: $dark;
+	// }
+
+	&__confirmBtn {
+		padding: 13px 40px;
+		border: 2px solid $grey;
+		background-color: transparent;
+		color: $grey;
+		margin-left: 5px;
+	}
 }
