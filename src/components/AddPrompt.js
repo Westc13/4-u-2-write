@@ -52,10 +52,10 @@ const AddPrompt = ({ prompts, setPrompts }) => {
 	return (
 		<div className="Main__promptfield">
 			<div className="Main__btnContainer">
-				<p>
+				{/* <p>
 					Add a writing prompt for future writers to draw inspiration
 					from:
-				</p>
+				</p> */}
 				<button className="Main__addBtn lightBtn" onClick={toggleClass}>
 					Add A Prompt!
 				</button>
