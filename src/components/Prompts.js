@@ -1,8 +1,11 @@
+import { memo } from "react";
+
 const Prompts = ({ POTD }) => {
-	return (
-		<div className="prompts">
-			<p>{POTD}</p>
-		</div>
-	);
+  console.log("wow we are so good at getting lost");
+  return (
+    <div className="prompts">
+      <h2>"{POTD}"</h2>
+    </div>
+  );
 };
-export default Prompts;
+export default memo(Prompts);
