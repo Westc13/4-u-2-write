@@ -3,6 +3,7 @@ import Form from "./Form";
 import Prompts from "./Prompts";
 
 const Main = ({ POTD, darkMode }) => {
+	console.log(darkMode);
 	return (
 		<div className={darkMode ? 'home darkMode' : 'home lightMode'}>
 			<main className="Main">

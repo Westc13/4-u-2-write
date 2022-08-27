@@ -89,6 +89,7 @@ function App() {
 					path="/main"
 					element={
 						<Main
+							handleToggle={handleToggle}
 							prompts={prompts}
 							setPrompts={setPrompts}
 							POTD={POTD}
