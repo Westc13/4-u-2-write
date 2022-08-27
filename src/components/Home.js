@@ -7,18 +7,15 @@ import toast from "react-hot-toast";
 import { FaSun } from "react-icons/fa";
 
 const Home = ({
-
-  prompts,
-  setPrompts,
-  POTD,
-  setPOTD,
-  currentDay,
-  setCurrentDay,
-  timeCheck,
-  handleToggle,
+	prompts,
+	setPrompts,
+	POTD,
+	setPOTD,
+	currentDay,
+	setCurrentDay,
+	timeCheck,
   darkMode,
-  setDarkMode,
-
+  handleToggle,
 }) => {
 	// !STATE ZONE
 	const { setTime } = useContext(TimerContext);
@@ -26,19 +23,10 @@ const Home = ({
 	// *Navigate
 	const navigate = useNavigate();
 
-
 	// !FUNCTION ZONE
 	const handleOnChange = (e) => {
 		setUserSelection(e.target.value);
 	};
-
-  const [userSelection, setUserSelection] = useState("placeholder");
-  // const [darkMode, setDarkMode] = useState(true);
-  
-  // const handleToggle = () => {
-  //   setDarkMode(!darkMode)    
-  // }
-
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -55,76 +43,61 @@ const Home = ({
 	}, [userSelection]);
 
 	return (
-		<div className="home">
+		<div className={!darkMode ? 'home lightMode' : 'home darkMode'}>
 			<div className="wrapper">
 				<header className="home__header">
 					<div className="home__imageContainer">
 						<img src={logo} alt="The 4 U 2 Write logo." />
 					</div>
 
-					<button className="myButton">
+					<button className="myButton"onClick={handleToggle}>
 						<FaSun />
 					</button>
 				</header>
 
+				<main className="home__main">
+					<h1>4 U 2 Write</h1>
+					<form
+						className="home__dropdownContainer"
+						onSubmit={handleSubmit}
+					>
+						<select
+							className="home__dropdown"
+							name="writingTime"
+							id="writingTime"
+							onChange={handleOnChange}
+							value={userSelection}
+						>
+							<option value="placeholder" disabled>
+								Choose your writing time
+							</option>
+							{/* //TODO update this to 15 mins */}
+							<option value={130}>15 minutes</option>
+							<option value={1800}>30 minutes</option>
+							<option value={2700}>45 minutes</option>
+							<option value={3600}>60 minutes</option>
+							{/* <option value="unlimited">Unlimited</option> */}
+						</select>
+						<label htmlFor="writingTime" className="sr-only">
+							Choose your writing time
+						</label>
 
+						<button className="home__goButton lightBtn">Go</button>
+					</form>
+				</main>
 
-
-  return (
-    <div className={darkMode ? 'home darkMode' : 'home lightMode'}>
-      <div className="wrapper">
-        <header className="home__header">
-          <div className="home__imageContainer">
-            <img src={logo} alt="The 4 U 2 Write logo." />
-          </div>
-
-          <button className="myButton" onClick={handleToggle} darkMode={darkMode}>Toggle Light/Dark Theme</button>
-        </header>
-
-        <main className="home__main">
-          <h1>4 U 2 Write</h1>
-          <form className="home__dropdownContainer" onSubmit={handleSubmit}>
-            <select
-
-              className="home__dropdown"
-              name="writingTime"
-              id="writingTime"
-              onChange={handleOnChange}
-              value={userSelection}
-            >
-              <option value="placeholder" disabled>
-                Choose your writing time
-              </option>
-              <option value={130}>15 minutes</option>
-              <option value={1800}>30 minutes</option>
-              <option value={2700}>45 minutes</option>
-              <option value={3600}>60 minutes</option>
-              {/* <option value="unlimited">Unlimited</option> */}
-            </select>
-            <label htmlFor="writingTime" className="sr-only">
-              Choose your writing time
-            </label>
-            <Link to="/main">
-              <button className="home__goButton button">Go</button>
-            </Link>
-          </form>
-        </main>
-
-        <aside className="home__aside">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-            labore, neque distinctio voluptatem vero perferendis suscipit, ullam
-            at ipsa earum cum cupiditate perspiciatis laborum adipisci porro
-            exercitationem eveniet non iste!
-          </p>
-        </aside>
-        <footer className="home__footer">
-          created at juno with unending spite
-        </footer>
-      </div>
-    </div>
-  );
-
+				<aside className="home__aside">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Assumenda, labore, neque distinctio voluptatem vero
+						perferendis suscipit, ullam at ipsa earum cum cupiditate
+						perspiciatis laborum adipisci porro exercitationem
+						eveniet non iste!
+					</p>
+				</aside>
+			</div>
+		</div>
+	);
 };
 
 export default Home;
