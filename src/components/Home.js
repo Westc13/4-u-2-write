@@ -1,10 +1,13 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
+import toast from "react-hot-toast";
+import { FaSun } from "react-icons/fa";
 
 const Home = ({
+
   prompts,
   setPrompts,
   POTD,
@@ -14,8 +17,18 @@ const Home = ({
   timeCheck,
   handleToggle,
   darkMode,
+  setDarkMode,
 }) => {
-  const { setTime } = useContext(TimerContext);
+	// !STATE ZONE
+	const { setTime } = useContext(TimerContext);
+	const [userSelection, setUserSelection] = useState("placeholder");
+	// *Navigate
+	const navigate = useNavigate();
+
+	// !FUNCTION ZONE
+	const handleOnChange = (e) => {
+		setUserSelection(e.target.value);
+	};
 
   const [userSelection, setUserSelection] = useState("placeholder");
   // const [darkMode, setDarkMode] = useState(true);
@@ -25,20 +38,37 @@ const Home = ({
   //   setDarkMode(!darkMode) 
   // }
 
-
   const handleOnChange = (e) => {
     setUserSelection(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (userSelection === "placeholder") {
+			toast.error("You must choose a writing time.");
+		} else {
+			navigate("/main");
+		}
+		timeCheck();
+	};
 
-    timeCheck();
-  };
+	useEffect(() => {
+		setTime(userSelection);
+	}, [userSelection]);
 
-  useEffect(() => {
-    setTime(userSelection);
-  }, [userSelection]);
+	return (
+		<div className="home">
+			<div className="wrapper">
+				<header className="home__header">
+					<div className="home__imageContainer">
+						<img src={logo} alt="The 4 U 2 Write logo." />
+					</div>
+
+					<button className="myButton">
+						<FaSun />
+					</button>
+				</header>
+
 
 
 
@@ -96,6 +126,7 @@ const Home = ({
       </div>
     </div>
   );
+
 };
 
 export default Home;
