@@ -15,8 +15,8 @@ const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
           </Link>
         </div>
         {/* //writing prompt */}
-        {/* <Prompts POTD={POTD} /> */}
-        <h2>"placeholder prompt"</h2>
+        <Prompts POTD={POTD} />
+        {/* <h2>"placeholder prompt"</h2> */}
         {/* <blockquote>Writing Prompt</blockquote> */}
         {/* Notification Clock */}
         <Timer />

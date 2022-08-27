@@ -23,16 +23,32 @@ function App() {
   useEffect(() => {
     console.log("component mount");
     // call the async firebase function defined below
-    getFirebasePrompts().then((response) => {
-      // setPrompts to the data we got
-      console.log("getFirebasePrompts firing");
-      setPrompts(response);
-    });
+    // getFirebasePrompts().then((response) => {
+    //   // setPrompts to the data we got
+    //   console.log("getFirebasePrompts firing");
+    //   setPrompts(response);
+    // });
+
+    const database = getDatabase(firebase);
+    const dbRef = ref(database);
+    // here's the await, make it return the data
+    get(dbRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          setPrompts(data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
-  useEffect(() => {
-    // setPOTD(prompts[0]["prompt"]);
-  }, [prompts]);
+  //double check dependency
+  //   useEffect(() => {
+  //     const promptTopic = prompts[0]["prompt"];
+  //     setPOTD(promptTopic);
+  //   }, [prompts]);
 
   // *on currentDay change -> change POTD
   useEffect(() => {
@@ -45,7 +61,8 @@ function App() {
 
       // delete that entry from the array
       // debugger;
-      // prompts.shift();
+      spreadPrompts.shift();
+      setPrompts(spreadPrompts);
       // set localstorage to current date time
       localStorage.setItem("storedCurrentDay", currentDay);
     } else {
@@ -74,6 +91,11 @@ function App() {
   const timeCheck = () => {
     // set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
     setCurrentDay(new Date().getDate().toString());
+    if (prompts) {
+      const promptTopic = prompts[0]["prompt"];
+      setPOTD(promptTopic);
+    }
+
     console.log(currentDay);
     console.log(localStorage.storedCurrentDay, currentDay);
   };

@@ -1,7 +1,8 @@
-const Prompts = ({ POTD }) => {
+const Prompts = ({ POTD, prompts }) => {
+  console.log(prompts);
   return (
     <div className="prompts">
-      <p>{POTD}</p>
+      <h2>"{POTD}"</h2>
     </div>
   );
 };
