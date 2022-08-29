@@ -12,144 +12,158 @@ import Footer from "./components/Footer";
 import Error from "./components/Error";
 
 function App() {
+	// !STATE ZONE
+	// list of prompts
+	const [prompts, setPrompts] = useState([]);
+	// current day
+	const [currentDay, setCurrentDay] = useState("");
+	// prompt of the day
+	const [POTD, setPOTD] = useState("");
+	// darkMode
+	const [darkMode, setDarkMode] = useState(true);
 
-  // !STATE ZONE
-  // list of prompts
-  const [prompts, setPrompts] = useState([]);
-  // current day
-  const [currentDay, setCurrentDay] = useState("");
-  // prompt of the day
-  const [POTD, setPOTD] = useState("");
+	// !PROMPT USE EFFECT ZONE
+	// *component mount set prompts state from firebase + current day
+	useEffect(() => {
+		console.log("component mount");
+		// call the async firebase function defined below
+		// getFirebasePrompts().then((response) => {
+		//   // setPrompts to the data we got
+		//   console.log("getFirebasePrompts firing");
+		//   setPrompts(response);
+		// });
 
-  // !PROMPT USE EFFECT ZONE
-  // *component mount set prompts state from firebase + current day
-  useEffect(() => {
-    console.log("component mount");
-    // call the async firebase function defined below
-    // getFirebasePrompts().then((response) => {
-    //   // setPrompts to the data we got
-    //   console.log("getFirebasePrompts firing");
-    //   setPrompts(response);
-    // });
+		const database = getDatabase(firebase);
+		const dbRef = ref(database);
+		// here's the await, make it return the data
+		get(dbRef)
+			.then((snapshot) => {
+				if (snapshot.exists()) {
+					const data = snapshot.val();
+					setPrompts(data);
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
 
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    // here's the await, make it return the data
-    get(dbRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          setPrompts(data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+	//double check dependency
+	//   useEffect(() => {
+	//     const promptTopic = prompts[0]["prompt"];
+	//     setPOTD(promptTopic);
+	//   }, [prompts]);
 
-  //double check dependency
-  //   useEffect(() => {
-  //     const promptTopic = prompts[0]["prompt"];
-  //     setPOTD(promptTopic);
-  //   }, [prompts]);
+	// !FUNCTION ZONE
 
-  // *on currentDay change -> change POTD
-  useEffect(() => {
-    console.log("currentDay useEffect firing");
-    if (localStorage.storedCurrentDay !== currentDay) {
-      // run the new prompt fn
-      let spreadPrompts = [...prompts];
-      console.log(spreadPrompts);
+	// *Get Prompts from Firebase - async fn
+	const getFirebasePrompts = async () => {
+		// get firebase going
+		const database = getDatabase(firebase);
+		const dbRef = ref(database);
+		// here's the await, make it return the data
+		const snapshot = await get(dbRef);
+		// .val to clean it up
+		const data = snapshot.val();
+		return data;
+	};
 
-      // delete that entry from the array
-      spreadPrompts.shift();
-      setPrompts(spreadPrompts);
-      // set localstorage to current date time
-      localStorage.setItem("storedCurrentDay", currentDay);
-    } else {
-      console.log("you are on the same day");
-    }
-  }, [currentDay]);
+	// *Update Prompt
+	// *localstorage time listener
+	const timeCheck = () => {
+		// set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
+		let today = new Date().getDate().toString();
+		console.log(today);
+		if (localStorage.storedCurrentDay !== today) {
+			// run the new prompt fn
+			let spreadPrompts = { ...prompts };
+			console.log(spreadPrompts);
+			// delete that entry from the array
+			console.log("current day if statement firing", today);
+			delete spreadPrompts[Object.keys(prompts)[0]];
+			setPrompts(spreadPrompts);
+			// set localstorage date to current date
+			localStorage.setItem("storedCurrentDay", today);
+		} else {
+			console.log("you are on the same day");
+		}
 
-  // !FUNCTION ZONE
+		// *setPOTD logic (deprecated?)
+		// if (prompts) {
+		// 	// const promptTopic = prompts[0]["prompt"];
+		// 	setPOTD(prompts[0]["prompt"]);
+		// }
+	};
 
-  // *Get Prompts from Firebase - async fn
-  const getFirebasePrompts = async () => {
-    // get firebase going
-    const database = getDatabase(firebase);
-    const dbRef = ref(database);
-    // here's the await, make it return the data
-    const snapshot = await get(dbRef);
-    // .val to clean it up
-    const data = snapshot.val();
-    return data;
-  };
+	const handleToggle = () => {
+		setDarkMode(!darkMode);
+	};
 
-  // *Update Prompt
-  // *localstorage time listener
-  const timeCheck = () => {
-    // set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
-    console.log("we are lost");
-    setCurrentDay(new Date().getDate().toString());
-    if (prompts) {
-      const promptTopic = prompts[0]["prompt"];
-      setPOTD(promptTopic);
-    }
-  };
-  const [darkMode, setDarkMode] = useState(true);
-
-  const handleToggle = () => {
-    setDarkMode(!darkMode);
-  };
-
-  // !RETURN
-  return (
-    <div>
-      <Toaster />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              handleToggle={handleToggle}
-              prompts={prompts}
-              setPrompts={setPrompts}
-              POTD={POTD}
-              setPOTD={setPOTD}
-              currentDay={currentDay}
-              setCurrentDay={setCurrentDay}
-              timeCheck={timeCheck}
-              darkMode={darkMode}
-            />
-          }
-        />
-        {/* //TODO update this with the writing page */}
-        <Route
-          path="/main"
-          element={
-            <Main
-              handleToggle={handleToggle}
-              prompts={prompts}
-              setPrompts={setPrompts}
-              POTD={POTD}
-              setPOTD={setPOTD}
-              currentDay={currentDay}
-              setCurrentDay={setCurrentDay}
-              darkMode={darkMode}
-            />
-          }
-        />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
-    </div>
-  );
-
+	// !RETURN
+	return (
+		<div>
+			<Toaster />
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<Home
+							handleToggle={handleToggle}
+							prompts={prompts}
+							setPrompts={setPrompts}
+							POTD={POTD}
+							setPOTD={setPOTD}
+							currentDay={currentDay}
+							setCurrentDay={setCurrentDay}
+							timeCheck={timeCheck}
+							darkMode={darkMode}
+						/>
+					}
+				/>
+				{/* //TODO update this with the writing page */}
+				<Route
+					path="/main"
+					element={
+						<Main
+							handleToggle={handleToggle}
+							prompts={prompts}
+							setPrompts={setPrompts}
+							POTD={POTD}
+							setPOTD={setPOTD}
+							currentDay={currentDay}
+							setCurrentDay={setCurrentDay}
+							darkMode={darkMode}
+						/>
+					}
+				/>
+				<Route path="*" element={<Error />} />
+			</Routes>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
 
 // !DEPRECATION ZONE
+// *on currentDay change -> change POTD
+// useEffect(() => {
+// 	console.log("currentDay useEffect firing");
+// 	if (localStorage.storedCurrentDay !== currentDay) {
+// 		// run the new prompt fn
+// 		let spreadPrompts = [...prompts];
+// 		console.log(spreadPrompts);
+
+// 		// delete that entry from the array
+// 		spreadPrompts.shift();
+// 		setPrompts(spreadPrompts);
+// 		// set localstorage to current date time
+// 		localStorage.setItem("storedCurrentDay", currentDay);
+// 	} else {
+// 		console.log("you are on the same day");
+// 	}
+// }, [currentDay]);
+
 // *when prompts changes -> push to firebase
 // useEffect(() => {
 // 	// *Create references to the database

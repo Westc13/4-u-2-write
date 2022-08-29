@@ -20,16 +20,17 @@ const AddPrompt = ({ prompts, setPrompts }) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
 
-		// unstatify prompts so we can edit it
-		const statelessPrompts = [...prompts];
+		// unstatify prompts so we can edit it (deprecated?)
+		// const promptsToPush = [...prompts];
 
-		// push userInput to that array
-		statelessPrompts.push(userInput);
+		// put userInput in an object that can be pushed
+		let objectToPush = {
+			prompt: userInput,
+		};
 
-		// set it back into state
-		setPrompts(statelessPrompts);
+		console.log(objectToPush);
 
-		// push(dbRef, prompts);
+		push(dbRef, objectToPush);
 	};
 
 	// *toggle class on click
