@@ -8,15 +8,18 @@ import Home from "./components/Home.js";
 import Main from "./components/Main.js";
 import firebase from "./firebase";
 import { getDatabase, ref, onValue, push, get } from "firebase/database";
+import Footer from "./components/Footer";
+import Error from "./components/Error";
 
 function App() {
+
   // !STATE ZONE
   // list of prompts
   const [prompts, setPrompts] = useState([]);
   // current day
   const [currentDay, setCurrentDay] = useState("");
   // prompt of the day
-  const [POTD, setPOTD] = useState([]);
+  const [POTD, setPOTD] = useState("");
 
   // !PROMPT USE EFFECT ZONE
   // *component mount set prompts state from firebase + current day
@@ -57,18 +60,14 @@ function App() {
       // run the new prompt fn
       let spreadPrompts = [...prompts];
       console.log(spreadPrompts);
-      // setPOTD(prompts[0]?.prompt);
 
       // delete that entry from the array
-      // debugger;
       spreadPrompts.shift();
       setPrompts(spreadPrompts);
       // set localstorage to current date time
       localStorage.setItem("storedCurrentDay", currentDay);
     } else {
       console.log("you are on the same day");
-      // debugger;
-      // setPOTD(prompts);
     }
   }, [currentDay]);
 
@@ -90,14 +89,12 @@ function App() {
   // *localstorage time listener
   const timeCheck = () => {
     // set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
+    console.log("we are lost");
     setCurrentDay(new Date().getDate().toString());
     if (prompts) {
       const promptTopic = prompts[0]["prompt"];
       setPOTD(promptTopic);
     }
-
-    console.log(currentDay);
-    console.log(localStorage.storedCurrentDay, currentDay);
   };
   const [darkMode, setDarkMode] = useState(true);
 
@@ -138,15 +135,16 @@ function App() {
               setPOTD={setPOTD}
               currentDay={currentDay}
               setCurrentDay={setCurrentDay}
-              timeCheck={timeCheck}
               darkMode={darkMode}
             />
           }
         />
+        <Route path="*" element={<Error />} />
       </Routes>
-      <footer className="footer">created at juno with unending spite</footer>
+      <Footer />
     </div>
   );
+
 }
 
 export default App;

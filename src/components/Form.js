@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import TimerContext from "../contexts/TimerContext";
