@@ -1,6 +1,6 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 import toast from "react-hot-toast";
@@ -72,12 +72,10 @@ const Home = ({
 							<option value="placeholder" disabled>
 								Choose your writing time
 							</option>
-							{/* //TODO update this to 15 mins */}
 							<option value={900}>15 minutes</option>
 							<option value={1800}>30 minutes</option>
 							<option value={2700}>45 minutes</option>
 							<option value={3600}>60 minutes</option>
-							{/* <option value="unlimited">Unlimited</option> */}
 						</select>
 						<label htmlFor="writingTime" className="sr-only">
 							Choose your writing time
