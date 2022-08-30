@@ -6,26 +6,37 @@ import AddPrompt from "./AddPrompt";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
+import { FaSun } from "react-icons/fa";
 
-const Main = ({ POTD, setPOTD, prompts, darkMode }) => {
+
+
+const Main = ({ POTD, setPOTD, prompts, darkMode, handleToggle }) => {
 	// !STATE ZONE
 	const { time } = useContext(TimerContext);
 	const navigate = useNavigate();
-
+	
+	
 	// !USE EFFECT
 	useEffect(() => {
-		if (!time || !prompts === true) {
+		if (time === "placeholder" || !prompts) {
 			navigate("/");
 		}
 		// comment to make eslint not angry with us:
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+	
 	// !RETURN
+
 
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
 			<main className="Main">
 				<header>
+				<button
+						className="lightBtn home__lightModeBtn"
+						onClick={handleToggle}
+					>
+						<FaSun />
+					</button>
 					<div className="Main__leftHeader">
 						{/* Notification Clock */}
 						<Timer />

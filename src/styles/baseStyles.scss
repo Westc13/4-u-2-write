@@ -65,6 +65,10 @@ select {
 
 		color: #eae5e9 !important;
 	}
+	.Main__confirmBtn {
+		background-color: $dark !important;
+		color: $grey !important;
+	}
 }
 
 .Error {
