@@ -1,7 +1,7 @@
 const Footer = ({ darkMode }) => {
   return (
-    <footer className={darkMode ? "footer" : "lightMode footer"}>
-      created at juno with unending spite
+    <footer className={!darkMode ? "lightMode footer" : "darkMode footer"}>
+      Created @ Juno College ✨
     </footer>
   );
 };

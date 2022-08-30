@@ -39,6 +39,7 @@ const Home = ({
 		}
 	};
 
+
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
 			<div className="wrapper">
@@ -71,12 +72,10 @@ const Home = ({
 							<option value="placeholder" disabled>
 								Choose your writing time
 							</option>
-							{/* //TODO update this to 15 mins */}
-							<option value={130}>15 minutes</option>
+							<option value={900}>15 minutes</option>
 							<option value={1800}>30 minutes</option>
 							<option value={2700}>45 minutes</option>
 							<option value={3600}>60 minutes</option>
-							{/* <option value="unlimited">Unlimited</option> */}
 						</select>
 						<label htmlFor="writingTime" className="sr-only">
 							Choose your writing time
