@@ -7,37 +7,50 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 
-const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
-  const { time } = useContext(TimerContext);
-  const navigate = useNavigate();
-  useEffect(() => {
-    console.log(time, POTD);
-    if (!time || !POTD) {
-      console.log("please work");
-      navigate("/");
-    }
-  }, []);
-  return (
-    <div className={!darkMode ? "home lightMode" : "home darkMode"}>
-      <main className="Main">
-        <div className="Main__backButton">
-          <Link className="lightBtn" to="/">
-            Back↩
-          </Link>
-        </div>
-        {/* //writing prompt */}
-        <Prompts POTD={POTD} />
-        {/* <h2>"placeholder prompt"</h2> */}
-        {/* <blockquote>Writing Prompt</blockquote> */}
-        {/* Notification Clock */}
-        <Timer />
-        {/* Writing area */}
-        <Form />
-        <Instructions />
-        <AddPrompt prompts={prompts} setPrompts={setPrompts} />
-      </main>
-    </div>
-  );
+const Main = ({ POTD, setPOTD, prompts, darkMode }) => {
+	// !STATE ZONE
+	const { time } = useContext(TimerContext);
+	const navigate = useNavigate();
+
+	// !USE EFFECT
+	useEffect(() => {
+		if (!time || !prompts === true) {
+			navigate("/");
+		}
+		// comment to make eslint not angry with us:
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+	// !RETURN
+
+	return (
+		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
+			<main className="Main">
+				<header>
+					<div className="Main__leftHeader">
+						{/* Notification Clock */}
+						<Timer />
+						{/* //writing prompt */}
+						<div className="Main__backButton">
+							<Link className="lightBtn" to="/">
+								Back↩
+							</Link>
+						</div>
+					</div>
+					<div className="Main__rightHeader">
+						<Prompts
+							prompts={prompts}
+							POTD={POTD}
+							setPOTD={setPOTD}
+						/>
+					</div>
+				</header>
+				{/* Writing area */}
+				<Form />
+				<Instructions />
+				<AddPrompt />
+			</main>
+		</div>
+	);
 };
 
 export default Main;

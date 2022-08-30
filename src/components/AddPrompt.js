@@ -1,11 +1,9 @@
 // !IMPORT ZONE
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import firebase from "../firebase";
-import { getDatabase, ref, onValue, set, push } from "firebase/database";
+import { getDatabase, ref, push } from "firebase/database";
 
-const AddPrompt = ({ prompts, setPrompts }) => {
+const AddPrompt = () => {
 	// !STATE ZONE
 	// userInput
 	const [userInput, setUserInput] = useState([]);
@@ -22,16 +20,12 @@ const AddPrompt = ({ prompts, setPrompts }) => {
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
 
-		// unstatify prompts so we can edit it
-		const statelessPrompts = [...prompts];
-
-		// push userInput to that array
-		statelessPrompts.push(userInput);
-
-		// set it back into state
-		setPrompts(statelessPrompts);
-
-		// push(dbRef, prompts);
+		// put userInput in an object that can be pushed
+		let objectToPush = {
+			prompt: userInput,
+		};
+		// push it to firebase
+		push(dbRef, objectToPush);
 	};
 
 	// *toggle class on click
