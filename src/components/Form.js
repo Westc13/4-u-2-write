@@ -17,7 +17,7 @@ const Form = () => {
         else clearInterval(myInterval);
         countDown -= 15;
       }
-      if (countDown === 15) {
+      if (countDown <= 15) {
         clearInterval(myInterval);
       }
     }, idleInterval);
