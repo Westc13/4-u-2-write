@@ -50,21 +50,29 @@ function App() {
 
 		// set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
 		let today = new Date().getDate().toString();
-		if (localStorage.storedCurrentDay !== today) {
-			// run the new prompt fn
-			let spreadPrompts = { ...prompts };
-			// delete that entry from the array
-			delete spreadPrompts[Object.keys(prompts)[0]];
+		// if there IS a stored current day:
+		if (localStorage.storedCurrentDay) {
+			// if the day has changed:
+			if (localStorage.storedCurrentDay !== today) {
+				// run the new prompt fn
+				let spreadPrompts = { ...prompts };
+				// delete that entry from the array
+				delete spreadPrompts[Object.keys(prompts)[0]];
 
-			// update the states
-			setPrompts(spreadPrompts);
-			setPOTD(prompts[Object.keys(prompts)[0]]);
-			// set localstorage date to current date
-			localStorage.setItem("storedCurrentDay", today);
+				// update the states
+				setPrompts(spreadPrompts);
+				setPOTD(prompts[Object.keys(prompts)[0]]);
+				// set localstorage date to current date
+				localStorage.setItem("storedCurrentDay", today);
 
-			// update the firebase that the prompt got deleted
-			set(dbRef, spreadPrompts);
+				// update the firebase that the prompt got deleted
+				set(dbRef, spreadPrompts);
+			} else {
+				// if the day hasn't changed: keep it the same
+				setPOTD(prompts[Object.keys(prompts)[0]]);
+			}
 		} else {
+			// if there's no stored current day: keep it the same
 			setPOTD(prompts[Object.keys(prompts)[0]]);
 		}
 	};
