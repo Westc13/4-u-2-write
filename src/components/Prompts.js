@@ -1,11 +1,15 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
-const Prompts = ({ POTD }) => {
-  console.log("wow we are so good at getting lost");
-  return (
-    <div className="prompts">
-      <h2>"{POTD}"</h2>
-    </div>
-  );
+const Prompts = ({ prompts, POTD, setPOTD }) => {
+	useEffect(() => {
+		setPOTD(prompts[Object.keys(prompts)[0]]);
+	}, [prompts, POTD]);
+
+	return (
+		<div className="prompts">
+			<h2>Prompt of the day:</h2>
+			<h2>{POTD.prompt}</h2>
+		</div>
+	);
 };
 export default memo(Prompts);
