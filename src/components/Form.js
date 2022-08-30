@@ -25,7 +25,8 @@ const Form = () => {
 		return () => {
 			clearInterval(myInterval);
 		};
-	}, [isIdle]);
+		// comment to make eslint not angry with us:
+	}, [isIdle]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	// !FUNCTION ZONE
 	const idleInterval = 15000;

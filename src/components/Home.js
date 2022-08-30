@@ -21,7 +21,8 @@ const Home = ({
 	// !USE EFFECT
 	useEffect(() => {
 		setTime(userSelection);
-	}, [userSelection]);
+		// comment to make eslint not angry with us:
+	}, [userSelection]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	// !FUNCTION ZONE
 	const handleOnChange = (e) => {
