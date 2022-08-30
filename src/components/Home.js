@@ -1,6 +1,6 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 import toast from "react-hot-toast";
@@ -38,6 +38,7 @@ const Home = ({
 			timeCheck();
 		}
 	};
+
 
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>

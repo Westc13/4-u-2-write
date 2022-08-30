@@ -52,7 +52,7 @@ const Timer = () => {
 
 			if (time === 0) {
 				clearInterval(timer);
-				// toast("you are dead");
+				alert("Your selected time is up!");
 			}
 		}, 1000);
 

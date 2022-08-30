@@ -9,6 +9,7 @@ import firebase from "./firebase";
 import { getDatabase, ref, get, set } from "firebase/database";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
+import withRouter from "./hooks";
 
 function App() {
 	// !STATE ZONE
@@ -125,4 +126,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withRouter(App);
