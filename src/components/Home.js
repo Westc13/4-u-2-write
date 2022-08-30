@@ -51,7 +51,10 @@ const Home = ({
 						<img src={logo} alt="The 4 U 2 Write logo." />
 					</div>
 
-					<button className="myButton" onClick={handleToggle}>
+					<button
+						className="lightBtn home__lightModeBtn"
+						onClick={handleToggle}
+					>
 						<FaSun />
 					</button>
 				</header>

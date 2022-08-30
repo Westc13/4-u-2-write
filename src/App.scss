@@ -1,21 +1,10 @@
-
 // *Setup Imports
 @import "./styles/setup.scss";
 @import "./styles/variables.scss";
 @import "./styles/typography.scss";
+
+// *Styling Imports
 @import "./styles/baseStyles.scss";
-@import "./styles/main.scss";
-
-// *Theming Imports -- taken from https://medium.com/@sroskelley/theming-in-sass-67b8c0265e3f
-// @import "./styles/colors.scss";
-// @import "./styles/toggleButton.scss";
-// //from theming folder
-// @import "./styles/theming/colorDefinitions.scss";
-// @import "./styles/theming/dark.scss";
-// @import "./styles/theming/functions.scss";
-// @import "./styles/theming/light.scss";
-// @import "./styles/theming/mixins.scss";
-
-// *Component Imports
 @import "./styles/home.scss";
-
+@import "./styles/main.scss";
+@import "./styles/mobile.scss";

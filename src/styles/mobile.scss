@@ -1,0 +1,48 @@
+// !900PX
+@media (max-width: 900px) {
+	.home__aside {
+		margin: 0 5%;
+	}
+
+	.home__lightModeBtn {
+		height: 45px;
+		padding: 0 15px;
+	}
+
+	.Main textarea {
+		width: 90vw;
+	}
+}
+
+// !700 PX
+@media (max-width: 700px) {
+	.Main header {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.Main__leftHeader {
+		display: flex;
+		justify-content: space-between;
+		width: 100vw;
+	}
+	.Main__timer,
+	.Main__backButton {
+		position: relative;
+	}
+}
+
+// !500PX
+@media (max-width: 500px) {
+	.home__imageContainer img {
+		height: 100px;
+	}
+
+	.home__dropdownContainer {
+		flex-direction: column;
+
+		button {
+			margin-top: 5%;
+		}
+	}
+}

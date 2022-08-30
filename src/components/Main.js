@@ -14,7 +14,7 @@ const Main = ({ POTD, setPOTD, prompts, setPrompts, darkMode }) => {
 
 	// !USE EFFECT
 	useEffect(() => {
-		if (!time || !prompts) {
+		if (!time || !prompts === true) {
 			navigate("/");
 		}
 	}, []);
@@ -24,17 +24,25 @@ const Main = ({ POTD, setPOTD, prompts, setPrompts, darkMode }) => {
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
 			<main className="Main">
-				<div className="Main__backButton">
-					<Link className="lightBtn" to="/">
-						Back↩
-					</Link>
-				</div>
-				{/* //writing prompt */}
-				<Prompts prompts={prompts} POTD={POTD} setPOTD={setPOTD} />
-				{/* <h2>"placeholder prompt"</h2> */}
-				{/* <blockquote>Writing Prompt</blockquote> */}
-				{/* Notification Clock */}
-				<Timer />
+				<header>
+					<div className="Main__leftHeader">
+						{/* Notification Clock */}
+						<Timer />
+						{/* //writing prompt */}
+						<div className="Main__backButton">
+							<Link className="lightBtn" to="/">
+								Back↩
+							</Link>
+						</div>
+					</div>
+					<div className="Main__rightHeader">
+						<Prompts
+							prompts={prompts}
+							POTD={POTD}
+							setPOTD={setPOTD}
+						/>
+					</div>
+				</header>
 				{/* Writing area */}
 				<Form />
 				<Instructions />
