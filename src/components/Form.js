@@ -21,7 +21,7 @@ const Form = () => {
 		let countDown = time;
 		const myInterval = setInterval(() => {
 			if (countDown > 0) {
-				if (isIdle) toast("15 seconds");
+				if (isIdle) toast("It's been 15 seconds! Keep the flow going!");
 				else clearInterval(myInterval);
 				countDown -= 15;
 			}

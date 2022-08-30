@@ -7,7 +7,7 @@ import Prompts from "./components/Prompts.js";
 import Home from "./components/Home.js";
 import Main from "./components/Main.js";
 import firebase from "./firebase";
-import { getDatabase, ref, onValue, push, get } from "firebase/database";
+import { getDatabase, ref, onValue, push, get, set } from "firebase/database";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 
@@ -26,13 +26,6 @@ function App() {
 	// *component mount set prompts state from firebase + current day
 	useEffect(() => {
 		console.log("component mount");
-		// call the async firebase function defined below
-		// getFirebasePrompts().then((response) => {
-		//   // setPrompts to the data we got
-		//   console.log("getFirebasePrompts firing");
-		//   setPrompts(response);
-		// });
-
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
 		// here's the await, make it return the data
@@ -48,29 +41,13 @@ function App() {
 			});
 	}, []);
 
-	//double check dependency
-	//   useEffect(() => {
-	//     const promptTopic = prompts[0]["prompt"];
-	//     setPOTD(promptTopic);
-	//   }, [prompts]);
-
 	// !FUNCTION ZONE
-
-	// *Get Prompts from Firebase - async fn
-	const getFirebasePrompts = async () => {
-		// get firebase going
+	// *localstorage time listener + update POTD
+	const timeCheck = () => {
+		// get the firebase going
 		const database = getDatabase(firebase);
 		const dbRef = ref(database);
-		// here's the await, make it return the data
-		const snapshot = await get(dbRef);
-		// .val to clean it up
-		const data = snapshot.val();
-		return data;
-	};
 
-	// *Update Prompt
-	// *localstorage time listener
-	const timeCheck = () => {
 		// set the currentDay state to the current day (put it to string cuz that's how localStorage stores it)
 		let today = new Date().getDate().toString();
 		console.log(today);
@@ -81,11 +58,19 @@ function App() {
 			// delete that entry from the array
 			console.log("current day if statement firing", today);
 			delete spreadPrompts[Object.keys(prompts)[0]];
+			console.log(spreadPrompts);
+
+			// update the states
 			setPrompts(spreadPrompts);
+			setPOTD(prompts[Object.keys(prompts)[0]]);
 			// set localstorage date to current date
 			localStorage.setItem("storedCurrentDay", today);
+
+			// update the firebase that the prompt got deleted
+			set(dbRef, spreadPrompts);
 		} else {
 			console.log("you are on the same day");
+			setPOTD(prompts[Object.keys(prompts)[0]]);
 		}
 
 		// *setPOTD logic (deprecated?)
@@ -146,6 +131,18 @@ function App() {
 export default App;
 
 // !DEPRECATION ZONE
+// *Get Prompts from Firebase - async fn
+// const getFirebasePrompts = async () => {
+// 	// get firebase going
+// 	const database = getDatabase(firebase);
+// 	const dbRef = ref(database);
+// 	// here's the await, make it return the data
+// 	const snapshot = await get(dbRef);
+// 	// .val to clean it up
+// 	const data = snapshot.val();
+// 	return data;
+// };
+
 // *on currentDay change -> change POTD
 // useEffect(() => {
 // 	console.log("currentDay useEffect firing");

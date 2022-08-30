@@ -7,14 +7,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 
-const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
+const Main = ({ POTD, setPOTD, prompts, setPrompts, darkMode }) => {
+	// !STATE ZONE
 	const { time } = useContext(TimerContext);
 	const navigate = useNavigate();
+
+	// !USE EFFECT
 	useEffect(() => {
 		if (!time || !prompts) {
 			navigate("/");
 		}
 	}, []);
+
+	// !RETURN
+
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
 			<main className="Main">
@@ -24,7 +30,7 @@ const Main = ({ POTD, prompts, setPrompts, darkMode }) => {
 					</Link>
 				</div>
 				{/* //writing prompt */}
-				<Prompts prompts={prompts} />
+				<Prompts prompts={prompts} POTD={POTD} setPOTD={setPOTD} />
 				{/* <h2>"placeholder prompt"</h2> */}
 				{/* <blockquote>Writing Prompt</blockquote> */}
 				{/* Notification Clock */}

@@ -1,88 +1,90 @@
 .wrapper {
-  max-width: 1280px;
-  width: 90%;
-  margin: 0 auto;
-  height: 100vh;
+	max-width: 1280px;
+	width: 90%;
+	margin: 0 auto;
+	height: 100vh;
 }
 
 select {
-  background-color: $grey;
-  color: $dark;
+	background-color: $grey;
+	color: $dark;
 }
 
 .lightBtn {
-  background-color: $grey;
-  color: $dark;
-  padding: 13px 40px;
-  font-size: 1.2rem;
-  border: 2px solid $dark;
-  text-decoration: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: 200ms;
+	background-color: $grey;
+	color: $dark;
+	padding: 13px 40px;
+	font-size: 1.2rem;
+	border: 2px solid $dark;
+	text-decoration: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 200ms;
 
-  &:hover,
-  &:focus {
-    border: 2px solid $lightBlue;
-    background-color: $dark;
-    color: $grey;
-  }
+	&:hover,
+	&:focus {
+		border: 2px solid $lightBlue;
+		background-color: $dark;
+		color: $grey;
+	}
 }
 
 .darkBtn {
-  border: 2px solid $grey;
-  padding: 13px 40px;
-  background-color: $dark;
-  font-size: 1.2rem;
-  color: $grey;
-  text-decoration: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: 200ms;
+	border: 2px solid $grey;
+	padding: 13px 40px;
+	background-color: $dark;
+	font-size: 1.2rem;
+	color: $grey;
+	text-decoration: none;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 200ms;
 
-  &:hover,
-  &:focus {
-    border: 2px solid $lightBlue;
-    background-color: $grey;
-    color: $dark;
-  }
+	&:hover,
+	&:focus {
+		border: 2px solid $lightBlue;
+		background-color: $grey;
+		color: $dark;
+	}
 }
 
 .lightMode {
-  color: #23395b !important;
+	color: #23395b !important;
 
-  background-color: #eae5e9 !important;
-  &.home {
-    background-color: #eae5e9 !important;
-  }
-  .home__aside p {
-    background-color: $dark !important;
-    color: $grey !important;
-  }
-  .home__imageContainer {
-    background-color: #23395b;
-  }
-  &.footer {
-    background-color: #23395b !important;
+	background-color: #eae5e9 !important;
+	&.home {
+		background-color: #eae5e9 !important;
+	}
+	.home__aside p {
+		background-color: $dark !important;
+		color: $grey !important;
+	}
+	.home__imageContainer {
+		background-color: #23395b;
+	}
+	&.footer {
+		background-color: #23395b !important;
 
-    color: #eae5e9 !important;
-  }
+		color: #eae5e9 !important;
+	}
 }
 
 .Error {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .footer {
-  background-color: $grey;
-  color: $dark;
-  text-align: center;
+	border: solid 1px $grey;
+	padding: 0.3%;
+	background-color: $grey;
+	color: $dark;
+	text-align: center;
 
-  position: sticky;
-  bottom: 0;
-  width: 100vw;
-  z-index: 100;
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+	z-index: 100;
 
-  overflow: hidden;
+	overflow: hidden;
 }

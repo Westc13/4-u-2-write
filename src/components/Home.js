@@ -89,11 +89,10 @@ const Home = ({
 
 				<aside className="home__aside">
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Assumenda, labore, neque distinctio voluptatem vero
-						perferendis suscipit, ullam at ipsa earum cum cupiditate
-						perspiciatis laborum adipisci porro exercitationem
-						eveniet non iste!
+						Choose an amount of time you want to write for, and get
+						ready to focus! Don't forget to keep the flow going --
+						if you haven't written anything in 15 seconds, we'll let
+						you know so you can get back in the groove!
 					</p>
 				</aside>
 			</div>
