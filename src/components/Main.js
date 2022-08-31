@@ -17,7 +17,8 @@ const Main = ({ POTD, setPOTD, prompts, darkMode }) => {
 		if (!time || !prompts === true) {
 			navigate("/");
 		}
-	}, []);
+		// comment to make eslint not angry with us:
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	// !RETURN
 
