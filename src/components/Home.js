@@ -68,7 +68,7 @@ const Home = ({
               <option value="placeholder" disabled>
                 Choose your writing time
               </option>
-              <option value={35}>15 minutes</option>
+              <option value={900}>15 minutes</option>
               <option value={1800}>30 minutes</option>
               <option value={2700}>45 minutes</option>
               <option value={3600}>60 minutes</option>
