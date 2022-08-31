@@ -14,6 +14,7 @@ const Main = ({ POTD, setPOTD, prompts, darkMode, handleToggle }) => {
   const navigate = useNavigate();
 
   // !USE EFFECT
+  // *forces redirect to home if they got here without choosing a time (navigated directly, refreshed, etc) or if we're out of prompts
   useEffect(() => {
     if (time === "placeholder" || !time || !prompts) {
       navigate("/");

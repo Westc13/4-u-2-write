@@ -10,13 +10,10 @@ import { getDatabase, ref, get, set } from "firebase/database";
 import Footer from "./components/Footer";
 import Error from "./components/Error";
 
-
 function App() {
 	// !STATE ZONE
 	// list of prompts
 	const [prompts, setPrompts] = useState([]);
-	// current day
-	const [currentDay, setCurrentDay] = useState("");
 	// prompt of the day
 	const [POTD, setPOTD] = useState("");
 	// darkMode
@@ -78,6 +75,7 @@ function App() {
 		}
 	};
 
+	// *dark mode toggler
 	const handleToggle = () => {
 		setDarkMode(!darkMode);
 	};
@@ -92,12 +90,6 @@ function App() {
 					element={
 						<Home
 							handleToggle={handleToggle}
-							prompts={prompts}
-							setPrompts={setPrompts}
-							POTD={POTD}
-							setPOTD={setPOTD}
-							currentDay={currentDay}
-							setCurrentDay={setCurrentDay}
 							timeCheck={timeCheck}
 							darkMode={darkMode}
 						/>
@@ -110,18 +102,15 @@ function App() {
 						<Main
 							handleToggle={handleToggle}
 							prompts={prompts}
-							setPrompts={setPrompts}
 							POTD={POTD}
 							setPOTD={setPOTD}
-							currentDay={currentDay}
-							setCurrentDay={setCurrentDay}
 							darkMode={darkMode}
 						/>
 					}
 				/>
 				<Route path="*" element={<Error />} />
 			</Routes>
-			<Footer darkMode={darkMode}/>
+			<Footer darkMode={darkMode} />
 		</div>
 	);
 }

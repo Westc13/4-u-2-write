@@ -51,7 +51,6 @@ const AddPrompt = () => {
 		} else {
 			toast.error('Please Enter a Prompt')
 		}
-		// TODO -- make this use the toast thing taimoor knows how to do :)
 	};
 
 	// !RETURN
