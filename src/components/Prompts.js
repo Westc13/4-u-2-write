@@ -8,7 +8,7 @@ const Prompts = ({ prompts, POTD, setPOTD }) => {
 
   return (
     <div className="Main__prompts">
-      <h2>Prompt of the day:</h2>
+      <h1>Prompt of the day:</h1>
       <h2>{POTD?.prompt}</h2>
     </div>
   );

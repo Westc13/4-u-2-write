@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 import toast from "react-hot-toast";
-import { FaSun } from "react-icons/fa";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Home = ({
   timeCheck,
@@ -51,7 +51,7 @@ const Home = ({
             className="lightBtn home__lightModeBtn"
             onClick={handleToggle}
           >
-            <FaSun />
+            {darkMode ? <FaSun /> : <FaMoon />}
           </button>
         </header>
 

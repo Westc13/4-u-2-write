@@ -23,12 +23,16 @@ const Timer = () => {
 
   //handle mouse over
   const handleOnMouseEnter = () => {
-    setShowTime(true);
+    if (time > 120) {
+      setShowTime(true);
+    }
   };
 
   //handle mouse leave
   const handleOnMouseLeave = () => {
-    setShowTime(false);
+    if (time > 120) {
+      setShowTime(false);
+    }
   };
 
   useEffect(() => {
