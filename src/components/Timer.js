@@ -50,7 +50,7 @@ const Timer = () => {
 
       if (time === 0) {
         clearInterval(timer);
-        toast("Your selected time is up!");
+        alert("Your selected time is up!");
       }
     }, 1000);
 

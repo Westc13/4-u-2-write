@@ -39,30 +39,19 @@
 		margin: 0 auto;
 	}
 
-	// &__goButton {
-	// 	border: 1px solid $grey;
-	// 	background-color: $dark;
-	// 	color: $grey;
-	// 	text-decoration: none;
-
-	// 	&:hover,
-	// 	&:focus {
-	// 		border: 1px solid $lightBlue;
-	// 		background-color: $grey;
-	// 		color: $dark;
-	// 	}
-	// }
-
 	&__aside {
 		display: flex;
 		align-self: center;
+		margin: 20px 35%;
 
-		margin: 0 35%;
+
 
 		p {
 			background-color: $grey;
 			color: $dark;
 			padding: 5%;
+			box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+			border-radius: 5px;
 		}
 	}
 }
