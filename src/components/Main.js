@@ -6,62 +6,54 @@ import AddPrompt from "./AddPrompt";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
-import { FaSun } from "react-icons/fa";
-
-
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Main = ({ POTD, setPOTD, prompts, darkMode, handleToggle }) => {
-	// !STATE ZONE
-	const { time } = useContext(TimerContext);
-	const navigate = useNavigate();
-	
-	
-	// !USE EFFECT
-	useEffect(() => {
-		if (time === "placeholder" || !prompts) {
-			navigate("/");
-		}
-		// comment to make eslint not angry with us:
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
-	
-	// !RETURN
+  // !STATE ZONE
+  const { time } = useContext(TimerContext);
+  const navigate = useNavigate();
 
+  // !USE EFFECT
+  useEffect(() => {
+    if (time === "placeholder" || !time || !prompts) {
+      navigate("/");
+    }
+    // comment to make eslint not angry with us:
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-	return (
-		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
-			<main className="Main">
-				<header>
-				<button
-						className="lightBtn home__lightModeBtn"
-						onClick={handleToggle}
-					>
-						<FaSun />
-					</button>
-					<div className="Main__leftHeader">
-						{/* Notification Clock */}
-						<Timer />
-						{/* //writing prompt */}
-						<div className="Main__backButton">
-							<Link className="lightBtn" to="/">
-								Back↩
-							</Link>
-						</div>
-					</div>
-					<div className="Main__rightHeader">
-						<Prompts
-							prompts={prompts}
-							POTD={POTD}
-							setPOTD={setPOTD}
-						/>
-					</div>
-				</header>
-				{/* Writing area */}
-				<Form />
-				<Instructions />
-				<AddPrompt />
-			</main>
-		</div>
-	);
+  // !RETURN
+
+  return (
+    <div className={!darkMode ? "home lightMode" : "home darkMode"}>
+      <main className="Main">
+        <header>
+          <button
+            className="lightBtn home__lightModeBtn"
+            onClick={handleToggle}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+          <div className="Main__leftHeader">
+            {/* Notification Clock */}
+            <Timer />
+            {/* //writing prompt */}
+            <div className="Main__backButton">
+              <Link className="lightBtn" to="/">
+                Back↩
+              </Link>
+            </div>
+          </div>
+          <div className="Main__rightHeader">
+            <Prompts prompts={prompts} POTD={POTD} setPOTD={setPOTD} />
+          </div>
+        </header>
+        {/* Writing area */}
+        <Form />
+        <Instructions />
+        <AddPrompt />
+      </main>
+    </div>
+  );
 };
 
 export default Main;

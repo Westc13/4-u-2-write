@@ -1,106 +1,120 @@
 .Main {
-	header {
-		text-align: center;
-	}
+  margin: 0 auto;
+  header {
+    text-align: center;
+  }
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: "Lato", sans-serif;
-	font-weight: bold;
-	// *Back Button
-	&__backButton {
-		position: absolute;
-		right: 0;
-		top: 15px;
-	}
-	// *Timer
-	&__timer {
-		position: absolute;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		top: 0;
-		left: 0;
-		background-color: $grey;
-		height: 80px;
-		width: 80px;
-		text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  // *Back Button
+  &__backButton {
+    position: absolute;
+    right: 0;
+    top: 15px;
+  }
+  // *Timer
+  &__timer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: $grey;
+    height: 80px;
+    width: 80px;
+    text-align: center;
 
-		p {
-			color: $dark;
-		}
-		.icon__clock {
-			height: 90%;
-			color: $dark;
-		}
-	}
+    p {
+      color: $dark;
+    }
+    .icon__clock {
+      height: 90%;
+      color: $dark;
+    }
+  }
 
-	// *Writing Area
-	&__form {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		fieldset {
-			border: none;
-			padding: 0;
-		}
-	}
+  // *Prompt Area
+  &__prompts {
+    width: 60vw;
+    padding: 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border: 1px solid $grey;
+    border-radius: 5px;
+  }
 
-	textarea {
-		width: 60vw;
-		resize: none;
-	}
+  // *Writing Area
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    fieldset {
+      border: none;
+      padding: 0;
+    }
+  }
 
-	// *Add Prompt
-	&__promptfield {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		overflow: hidden;
-		transition: 300ms ease-in-out;
-		text-align: center;
-		margin-bottom: 5%;
-	}
-	&__btnContainer {
-		z-index: 20;
-		margin: 2% auto;
-	}
-	&__addPrompt {
-		position: relative;
-		z-index: 1;
-		transition: 1s;
-	}
+  textarea {
+    width: 60vw;
+    resize: none;
+    margin: 50px 0 30px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    // border: 1px solid $lightBlue;
+    padding: 20px;
+    color: $dark;
+    border-radius: 5px;
 
-	// animation toggle
-	&__addPrompt--animation {
-		transform: translateX(-2000px);
-	}
+    &::selection {
+      background: $lightBlue;
+    }
+  }
 
-	&__inputPrompt {
-		width: 400px;
-		padding: 13px 40px;
-		font-size: 1.2rem;
-	}
+  &__instructions {
+    width: 60vw;
+  }
 
-	// &__undoBtn {
-	// 	position: absolute;
-	// 	color: $dark;
-	// 	top: 25%;
-	// 	right: 158px;
-	// }
-	// .icon__Undo {
-	// 	height: 25px;
-	// 	color: $dark;
-	// }
+  // *Add Prompt
+  &__promptfield {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    transition: 300ms ease-in-out;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+  &__btnContainer {
+    z-index: 20;
+    margin: 2% auto;
+  }
+  &__addPrompt {
+    position: relative;
+    z-index: 1;
+    transition: 1s;
+  }
 
-	&__confirmBtn {
-		padding: 13px 40px;
-		border: 2px solid $grey;
-		background-color: transparent;
-		color: $grey;
-		margin-left: 5px;
-	}
+  // animation toggle
+  &__addPrompt--animation {
+    transform: translateX(-2000px);
+  }
+
+  &__inputPrompt {
+    width: 400px;
+    padding: 13px 40px;
+    font-size: 1.2rem;
+  }
+
+  &__confirmBtn {
+    padding: 13px 40px;
+    border: 2px solid $grey;
+    background-color: transparent;
+    color: $grey;
+    margin-left: 5px;
+  }
 }
