@@ -40,9 +40,14 @@
 
   .home__dropdownContainer {
     flex-direction: column;
+    .home__dropdown {
+      padding: 10px 0;
+      height: 50px;
+    }
 
     button {
       margin-top: 5%;
+      margin-left: 0;
     }
   }
   .Main__inputPrompt {

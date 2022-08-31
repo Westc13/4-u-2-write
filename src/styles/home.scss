@@ -1,57 +1,62 @@
 .home {
-	background-color: $dark;
-	height: 100%;
-	position: relative;
+  background-color: $dark;
+  height: 100%;
+  position: relative;
 
-	&__wrapper {
-		height: 100vh;
-		display: flex;
-		flex-direction: column;
-	}
+  &__wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-	&__header {
-		display: flex;
-		justify-content: space-between;
-		padding: 1%;
-	}
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+  }
 
-	&__imageContainer {
-		background-color: $grey;
-		border-radius: 50%;
-	}
+  &__imageContainer {
+    background-color: $grey;
+    border-radius: 50%;
+  }
 
-	&__lightModeBtn {
-		margin-top: 0;
-		margin-bottom: 8%;
-		font-size: 1.6rem;
-	}
+  &__lightModeBtn {
+    margin-top: 0;
+    margin-bottom: 8%;
+    font-size: 1.6rem;
+  }
 
-	&__main {
-		display: flex;
-		flex-direction: column;
-		margin: 0 auto;
-		text-align: center;
-	}
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-	&__dropdownContainer {
-		display: flex;
-		flex-direction: row;
-		margin: 0 auto;
-	}
+  &__dropdownContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    button {
+      border-color: $grey;
+      margin-left: 5px;
+    }
+    option {
+      color: $dark;
+    }
+  }
 
-	&__aside {
-		display: flex;
-		align-self: center;
-		margin: 20px 35%;
+  &__aside {
+    display: flex;
+    align-self: center;
+    margin: 20px 35%;
 
-
-
-		p {
-			background-color: $grey;
-			color: $dark;
-			padding: 5%;
-			box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-			border-radius: 5px;
-		}
-	}
+    p {
+      background-color: $grey;
+      color: $dark;
+      padding: 5%;
+      box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+      border-radius: 5px;
+    }
+  }
 }
