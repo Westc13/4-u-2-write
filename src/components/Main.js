@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 
-const Main = ({ POTD, setPOTD, prompts, setPrompts, darkMode }) => {
+const Main = ({ POTD, setPOTD, prompts, darkMode }) => {
 	// !STATE ZONE
 	const { time } = useContext(TimerContext);
 	const navigate = useNavigate();
@@ -46,7 +46,7 @@ const Main = ({ POTD, setPOTD, prompts, setPrompts, darkMode }) => {
 				{/* Writing area */}
 				<Form />
 				<Instructions />
-				<AddPrompt prompts={prompts} setPrompts={setPrompts} />
+				<AddPrompt />
 			</main>
 		</div>
 	);

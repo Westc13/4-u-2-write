@@ -3,20 +3,12 @@ import toast from "react-hot-toast";
 import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
+	// !STATE ZONE
 	const { time } = useContext(TimerContext);
 	const [userText, setUserText] = useState("");
 	const [isIdle, setIsIdle] = useState(true);
-	const idleInterval = 15000;
 
-	const handleChange = (e) => {
-		setUserText(e.target.value);
-		setIsIdle(false);
-	};
-
-	const handleKeyUp = () => {
-		setIsIdle(true);
-	};
-
+	// !USE EFFECT
 	useEffect(() => {
 		let countDown = time;
 		const myInterval = setInterval(() => {
@@ -35,15 +27,19 @@ const Form = () => {
 		};
 	}, [isIdle]);
 
-	//   const inputChecker = () => {};
+	// !FUNCTION ZONE
+	const idleInterval = 15000;
 
-	//   const clearLapse = () => {
-	//     return clearInterval(myInterval);
-	//   };
+	const handleChange = (e) => {
+		setUserText(e.target.value);
+		setIsIdle(false);
+	};
 
-	//on keyUp start checker (setTimeout)
-	//on keyDown stop checker clearInterval reset lapse time
+	const handleKeyUp = () => {
+		setIsIdle(true);
+	};
 
+	// !RETURN
 	return (
 		<form className="Main__form">
 			<fieldset>

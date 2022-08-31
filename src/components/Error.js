@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const Error = ({ darkMode }) => {
-	console.log(darkMode);
 	return (
 		<section className={!darkMode ? "Error lightMode" : "Error"}>
 			<h1>404!</h1>

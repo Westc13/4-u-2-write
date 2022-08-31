@@ -1,18 +1,12 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 import toast from "react-hot-toast";
 import { FaSun } from "react-icons/fa";
 
 const Home = ({
-	prompts,
-	setPrompts,
-	POTD,
-	setPOTD,
-	currentDay,
-	setCurrentDay,
 	timeCheck,
 	darkMode,
 
@@ -23,6 +17,11 @@ const Home = ({
 	const [userSelection, setUserSelection] = useState("placeholder");
 	// *Navigate
 	const navigate = useNavigate();
+
+	// !USE EFFECT
+	useEffect(() => {
+		setTime(userSelection);
+	}, [userSelection]);
 
 	// !FUNCTION ZONE
 	const handleOnChange = (e) => {
@@ -38,10 +37,6 @@ const Home = ({
 			timeCheck();
 		}
 	};
-
-	useEffect(() => {
-		setTime(userSelection);
-	}, [userSelection]);
 
 	return (
 		<div className={!darkMode ? "home lightMode" : "home darkMode"}>
