@@ -1,75 +1,70 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import TimerContext from "../contexts/TimerContext";
 
 const Form = () => {
-	const { time } = useContext(TimerContext);
-	const [userText, setUserText] = useState("");
-	const [isIdle, setIsIdle] = useState(true);
-	const idleInterval = 15000;
+  // !STATE ZONE
+  const { time } = useContext(TimerContext);
+  const [userText, setUserText] = useState("");
+  const [isIdle, setIsIdle] = useState(true);
 
-	const handleChange = (e) => {
-		setUserText(e.target.value);
-		setIsIdle(false);
-	};
+  // !USE EFFECT
+  useEffect(() => {
+    let countDown = time;
+    const myInterval = setInterval(() => {
+      if (countDown > 0) {
+        if (isIdle) toast("It's been 15 seconds! Keep the flow going!");
+        else clearInterval(myInterval);
+        countDown -= 15;
+      }
+      if (countDown <= 15) {
+        clearInterval(myInterval);
+      }
+    }, idleInterval);
 
-	const handleKeyUp = () => {
-		setIsIdle(true);
-	};
+    return () => {
+      clearInterval(myInterval);
+    };
+    // comment to make eslint not angry with us:
+  }, [isIdle]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	useEffect(() => {
-		let countDown = time;
-		const myInterval = setInterval(() => {
-			if (countDown > 0) {
-				if (isIdle) toast("15 seconds");
-				else clearInterval(myInterval);
-				countDown -= 15;
-			}
-			if (countDown === 0) {
-				clearInterval(myInterval);
-			}
-		}, idleInterval);
+  // !FUNCTION ZONE
+  const idleInterval = 15000;
 
-		return () => {
-			clearInterval(myInterval);
-		};
-	}, [isIdle]);
+  const handleChange = (e) => {
+    setUserText(e.target.value);
+    setIsIdle(false);
+  };
 
-	//   const inputChecker = () => {};
+  const handleKeyUp = () => {
+    setIsIdle(true);
+  };
 
-	//   const clearLapse = () => {
-	//     return clearInterval(myInterval);
-	//   };
-
-	//on keyUp start checker (setTimeout)
-	//on keyDown stop checker clearInterval reset lapse time
-
-	return (
-		<form className="Main__form">
-			<fieldset>
-				<label htmlFor="journal" className="sr-only">
-					Write here
-				</label>
-				<textarea
-					name="journal"
-					id="journal"
-					cols="30"
-					rows="30"
-					value={userText}
-					onChange={handleChange}
-					onKeyUp={handleKeyUp}
-					onMouseUp={() => {
-						setIsIdle(true);
-					}}
-					onMouseDown={() => {
-						setIsIdle(false);
-					}}
-				></textarea>
-			</fieldset>
-		</form>
-	);
+  // !RETURN
+  return (
+    <form className="Main__form">
+      <fieldset>
+        <label htmlFor="journal" className="sr-only">
+          Write here
+        </label>
+        <textarea
+          name="journal"
+          id="journal"
+          cols="30"
+          rows="30"
+          value={userText}
+          onChange={handleChange}
+          onKeyUp={handleKeyUp}
+          onMouseUp={() => {
+            setIsIdle(true);
+          }}
+          onMouseDown={() => {
+            setIsIdle(false);
+          }}
+        ></textarea>
+      </fieldset>
+    </form>
+  );
 };
 
 export default Form;

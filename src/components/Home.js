@@ -1,20 +1,15 @@
 // !IMPORT ZONE
 import logo from "../assets/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import TimerContext from "../contexts/TimerContext";
 import toast from "react-hot-toast";
-import { FaSun } from "react-icons/fa";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Home = ({
-  prompts,
-  setPrompts,
-  POTD,
-  setPOTD,
-  currentDay,
-  setCurrentDay,
   timeCheck,
   darkMode,
+
   handleToggle,
 }) => {
   // !STATE ZONE
@@ -22,6 +17,12 @@ const Home = ({
   const [userSelection, setUserSelection] = useState("placeholder");
   // *Navigate
   const navigate = useNavigate();
+
+  // !USE EFFECT
+  useEffect(() => {
+    setTime(userSelection);
+    // comment to make eslint not angry with us:
+  }, [userSelection]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // !FUNCTION ZONE
   const handleOnChange = (e) => {
@@ -34,13 +35,9 @@ const Home = ({
       toast.error("You must choose a writing time.");
     } else {
       navigate("/main");
+      timeCheck();
     }
-    timeCheck();
   };
-
-  useEffect(() => {
-    setTime(userSelection);
-  }, [userSelection]);
 
   return (
     <div className={!darkMode ? "home lightMode" : "home darkMode"}>
@@ -50,8 +47,11 @@ const Home = ({
             <img src={logo} alt="The 4 U 2 Write logo." />
           </div>
 
-          <button className="myButton" onClick={handleToggle}>
-            <FaSun />
+          <button
+            className="lightBtn home__lightModeBtn"
+            onClick={handleToggle}
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
           </button>
         </header>
 
@@ -68,8 +68,7 @@ const Home = ({
               <option value="placeholder" disabled>
                 Choose your writing time
               </option>
-              {/* //TODO update this to 15 mins */}
-              <option value={900}>15 minutes</option>
+              <option value={35}>15 minutes</option>
               <option value={1800}>30 minutes</option>
               <option value={2700}>45 minutes</option>
               <option value={3600}>60 minutes</option>
@@ -84,10 +83,10 @@ const Home = ({
 
         <aside className="home__aside">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-            labore, neque distinctio voluptatem vero perferendis suscipit, ullam
-            at ipsa earum cum cupiditate perspiciatis laborum adipisci porro
-            exercitationem eveniet non iste!
+            Choose an amount of time you want to write for, and get ready to
+            focus! Don't forget to keep the flow going -- if you haven't written
+            anything in 15 seconds, we'll let you know so you can get back in
+            the groove!
           </p>
         </aside>
       </div>

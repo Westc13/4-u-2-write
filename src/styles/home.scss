@@ -1,6 +1,6 @@
 .home {
 	background-color: $dark;
-	height: 100vh;
+	height: 100%;
 	position: relative;
 
 	&__wrapper {
@@ -18,6 +18,12 @@
 	&__imageContainer {
 		background-color: $grey;
 		border-radius: 50%;
+	}
+
+	&__lightModeBtn {
+		margin-top: 0;
+		margin-bottom: 8%;
+		font-size: 1.6rem;
 	}
 
 	&__main {
