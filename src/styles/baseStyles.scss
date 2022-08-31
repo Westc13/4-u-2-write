@@ -50,26 +50,36 @@ select {
 }
 
 .lightMode {
-  color: #23395b !important;
+  color: $dark !important;
 
-  background-color: #eae5e9 !important;
+  background-color: $grey !important;
   &.home {
-    background-color: #eae5e9 !important;
+    background-color: $grey !important;
   }
   .home__aside p {
     background-color: $dark !important;
     color: $grey !important;
   }
-  .home__imageContainer {
-    background-color: #23395b;
-  }
-  &.footer {
-    background-color: #23395b !important;
 
-    color: #eae5e9 !important;
+  &.footer {
+    background-color: $dark !important;
+
+    color: $grey !important;
   }
   .Main__confirmBtn {
     background-color: $dark !important;
+    color: $grey !important;
+  }
+}
+
+.lightModeBtn {
+  color: $dark !important;
+  border-color: $dark !important;
+}
+
+button.lightModeBtn {
+  &:hover,
+  &:focus {
     color: $grey !important;
   }
 }

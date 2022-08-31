@@ -30,6 +30,10 @@
   .Main__backButton {
     position: relative;
   }
+  .Main__prompts {
+    margin: 20px auto;
+    width: 80vw;
+  }
 }
 
 // !500PX
@@ -55,9 +59,5 @@
   }
   .Main__confirmBtn {
     margin-top: 10px;
-  }
-  .Main__prompts {
-    margin: 20px auto;
-    width: 80vw;
   }
 }
