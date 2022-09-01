@@ -4,9 +4,10 @@
     margin: 0 5%;
   }
 
-  .home__lightModeBtn {
-    height: 45px;
-    padding: 0 15px;
+  .Main__nav {
+    .lightBtn {
+      padding: 10px 30px;
+    }
   }
 
   .Main textarea {
@@ -26,10 +27,7 @@
     justify-content: space-between;
     width: 100vw;
   }
-  .Main__timer,
-  .Main__backButton {
-    position: relative;
-  }
+
   .Main__prompts {
     margin: 20px auto;
     width: 80vw;
@@ -54,6 +52,10 @@
       margin-left: 0;
     }
   }
+  .Main__instructions {
+    width: 80vw;
+  }
+
   .Main__inputPrompt {
     width: 90%;
   }

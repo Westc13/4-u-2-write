@@ -1,5 +1,6 @@
 .Main {
   margin: 0 auto;
+  padding-top: 100px;
   header {
     text-align: center;
   }
@@ -11,10 +12,11 @@
   font-family: "Lato", sans-serif;
   font-weight: bold;
   // *Back Button
-  &__backButton {
+  &__nav {
     position: absolute;
     right: 0;
-    top: 15px;
+    top: 5px;
+    right: 5px;
   }
   // *Timer
   &__timer {

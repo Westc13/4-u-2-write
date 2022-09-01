@@ -28,17 +28,17 @@ const Main = ({ POTD, setPOTD, prompts, darkMode, handleToggle }) => {
     <div className={!darkMode ? "home lightMode" : "home darkMode"}>
       <main className="Main">
         <header>
-          <button
-            className="lightBtn home__lightModeBtn"
-            onClick={handleToggle}
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
           <div className="Main__leftHeader">
             {/* Notification Clock */}
             <Timer />
             {/* //writing prompt */}
-            <div className="Main__backButton">
+            <div className="Main__nav">
+              <button
+                className="lightBtn home__lightModeBtn"
+                onClick={handleToggle}
+              >
+                {darkMode ? <FaSun /> : <FaMoon />}
+              </button>
               <Link className="lightBtn" to="/">
                 Back↩
               </Link>
