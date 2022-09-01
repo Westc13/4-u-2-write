@@ -5,6 +5,7 @@ body {
   color: $grey;
   // TODO TEMPORARY FIX
   background-color: $dark;
+  font-family: $bodyFont;
 }
 
 h1,
@@ -22,6 +23,7 @@ ul {
 
 li {
   margin-bottom: 10px;
+  font-weight: 400;
 }
 @mixin bodyFont {
   font-family: "Lato", sans-serif;

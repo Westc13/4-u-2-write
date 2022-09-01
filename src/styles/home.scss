@@ -39,11 +39,13 @@
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+
     button {
       border-color: $grey;
       margin-left: 5px;
     }
     option {
+      font-family: $bodyFont;
       color: $dark;
     }
   }
